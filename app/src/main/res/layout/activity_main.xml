@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- BACKGROUND -->
+    <ImageView
+        android:id="@+id/panel_IMG_backGround"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:background="#5F000000"
+        android:layout_centerInParent="true"
+        android:cropToPadding="true" />
+
+
+    <LinearLayout
+        android:id="@+id/panel_LLV_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- ### Top Layout ### -->
+        <LinearLayout
+            android:id="@+id/panel_LLH_top"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.75"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.8"
+                android:autoSizeMaxTextSize="100sp"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeTextType="uniform"
+                android:layout_marginStart="4dp"
+                android:text="Score : "
+                android:textColor="#0000FF" />
+
+            <TextView
+                android:id="@+id/panel_TXT_score"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:autoSizeMaxTextSize="100sp"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeTextType="uniform"
+                android:text="0"
+                android:textColor="#0000FF" />
+
+            <!-- Heart START -->
+
+            <ImageView
+                android:id="@+id/panel_IMG_heart_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/ic_heart"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_heart_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/ic_heart"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_heart_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/ic_heart"
+                tools:ignore="ContentDescription" />
+
+            <!-- Heart END -->
+
+
+
+        </LinearLayout>
+
+
+        <!-- ### Rows Layouts ### -->
+        <!-- Rows START -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone0_0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone0_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone0_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone0_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone0_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone1_0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone1_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone1_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone1_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone1_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone2_0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone2_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone2_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone2_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone2_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone3_0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone3_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone3_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone3_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone3_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone4_0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone4_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone4_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone4_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone4_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone5_0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone5_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone5_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone5_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone5_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone6_0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone6_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone6_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone6_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone6_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone7_0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone7_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone7_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone7_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_stone7_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="135"
+                android:src="@drawable/ic_stone"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <!-- Rows END -->
+
+
+        <!-- ### player Layout ### -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <!-- Player START -->
+
+            <ImageView
+                android:id="@+id/panel_IMG_player_0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_player"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_player_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_player"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_player_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_player"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_player_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_player"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_player_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_player"
+                android:visibility="invisible"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <!-- Player END -->
+
+        </LinearLayout>
+
+        <!-- ### controls button Layout ### -->
+        <LinearLayout
+            android:id="@+id/panel_LLH_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/panel_BTN_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="#00ffffff"
+                android:src="@drawable/ic_left_arrow" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/panel_BTN_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="10dp"
+                android:background="#00ffffff"
+                android:src="@drawable/ic_right_arrow" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
