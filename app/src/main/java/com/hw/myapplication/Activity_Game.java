@@ -18,7 +18,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class Activity_Game extends AppCompatActivity {
 
     private final int MAX_LIVES = 3 ;
     private int lives = MAX_LIVES   ;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_game);
         findViews();
         initGame();
     }
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setBackGround() {
         ImageView panel_IMG_BG = findViewById(R.id.panel_IMG_backGround);
-        Glide.with(MainActivity.this).load(R.drawable.bg).centerCrop().into(panel_IMG_BG);
+        Glide.with(Activity_Game.this).load(R.drawable.bg).centerCrop().into(panel_IMG_BG);
     }
 
     private void findHeartsView(){
@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showToast(String str) {
-        Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
+        Toast.makeText(Activity_Game.this, str, Toast.LENGTH_SHORT).show();
     }
 
     private void hitView(boolean hit) {
@@ -285,6 +285,11 @@ public class MainActivity extends AppCompatActivity {
             heart.setVisibility(View.VISIBLE);
             lives = MAX_LIVES;
         }
+    }
+
+    @Override
+    public void finish(){
+
     }
 
 }
