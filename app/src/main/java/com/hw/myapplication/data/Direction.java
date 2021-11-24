@@ -1,4 +1,4 @@
-package com.hw.myapplication;
+package com.hw.myapplication.data;
 
 public class Direction {
     public final static int LEFT    = -1  ;

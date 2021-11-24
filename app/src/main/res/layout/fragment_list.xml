@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="3dp"
     android:background="@color/white"
-    tools:context=".Activity_Top10" >
+    tools:context=".activities.Activity_Top10" >
 
     <LinearLayout
         android:id="@+id/DataRow"

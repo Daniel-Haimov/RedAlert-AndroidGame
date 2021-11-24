@@ -1,4 +1,4 @@
-package com.hw.myapplication;
+package com.hw.myapplication.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import com.hw.myapplication.R;
+import com.hw.myapplication.callbacks.CallBack_List;
 
 import java.util.Random;
 

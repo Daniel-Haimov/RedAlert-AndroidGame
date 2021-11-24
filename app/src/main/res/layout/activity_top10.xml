@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity_Top10"
+    tools:context=".activities.Activity_Top10"
     android:keepScreenOn="true">
 
     <androidx.appcompat.widget.LinearLayoutCompat

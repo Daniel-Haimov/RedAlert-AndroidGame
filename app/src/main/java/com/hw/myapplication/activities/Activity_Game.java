@@ -1,4 +1,4 @@
-package com.hw.myapplication;
+package com.hw.myapplication.activities;
 
 
 
@@ -15,6 +15,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.hw.myapplication.data.Direction;
+import com.hw.myapplication.libs.MyTicker;
+import com.hw.myapplication.libs.MyVibrate;
+import com.hw.myapplication.R;
 
 import java.util.Random;
 
@@ -287,9 +291,6 @@ public class Activity_Game extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void finish(){
 
-    }
 
 }

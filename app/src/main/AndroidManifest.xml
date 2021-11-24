@@ -24,13 +24,13 @@
 
 
         <activity
-            android:name=".Activity_Top10"
+            android:name=".activities.Activity_Top10"
             android:exported="true" />
         <activity
-            android:name=".Activity_Settings"
+            android:name=".activities.Activity_Settings"
             android:exported="false" />
         <activity
-            android:name=".Activity_Entry"
+            android:name=".activities.Activity_Entry"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,7 +39,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity_Game"
+            android:name=".activities.Activity_Game"
             android:exported="false"
             android:screenOrientation="portrait" />
     </application>

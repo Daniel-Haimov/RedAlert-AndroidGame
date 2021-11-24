@@ -1,13 +1,14 @@
-package com.hw.myapplication;
+package com.hw.myapplication.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
-import android.widget.TextView;
 
-import com.google.android.gms.maps.SupportMapFragment;
+import com.hw.myapplication.callbacks.CallBack_List;
+import com.hw.myapplication.callbacks.CallBack_Map;
+import com.hw.myapplication.fragments.Fragment_List;
+import com.hw.myapplication.fragments.Fragment_Map;
+import com.hw.myapplication.R;
 
 public class Activity_Top10 extends AppCompatActivity {
 
