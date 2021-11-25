@@ -3,14 +3,14 @@ package com.hw.myapplication.data;
 import java.util.ArrayList;
 
 public class RecordDBController {
-    public static ArrayList<Record> updateRecord(ArrayList<Record> records, Record record) {
+    public static void updateRecord(ArrayList<Record> records, Record record) {
         records.add(record);
-        records.sort((a, b) -> (int) (a.getScore() - b.getScore()));
+        records.sort((a, b) -> (int) (b.getScore() - a.getScore()));
 
-        // TODO beautify
-        if(records.size() > 10){
+        if(records.size() < 10){
+            return;
+        }else{
             records.remove(10);
         }
-        return records;
     }
 }

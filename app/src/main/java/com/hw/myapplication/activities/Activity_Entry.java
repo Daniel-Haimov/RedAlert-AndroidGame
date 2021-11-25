@@ -4,13 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
 import com.hw.myapplication.R;
+import com.hw.myapplication.data.KeysAndValues;
+import com.hw.myapplication.libs.MSPV3;
 
 public class Activity_Entry extends AppCompatActivity {
+    private Bundle bundle;
 
     private EditText    entry_TXTF_UserName ;
     private Button      entry_BTN_Play      ;
@@ -20,6 +23,12 @@ public class Activity_Entry extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState != null){
+            this.bundle = savedInstanceState;
+        } else {
+            this.bundle = new Bundle();
+        }
+
         setContentView(R.layout.activity_entry);
         findViews();
         initButtons();
@@ -47,12 +56,33 @@ public class Activity_Entry extends AppCompatActivity {
 
     private void startGame(Class activity) {
         Intent myIntent = new Intent(this, activity);
-        Bundle bundle = new Bundle();
-        // TODO add values to Bundle
-
-
-        myIntent.putExtra("Bundle", bundle);
+        initBundle();
+        myIntent.putExtra(KeysAndValues.BUNDLE_KEY, bundle);
         startActivity(myIntent);
+    }
+
+    private void initBundle() {
+        MSPV3 sp = MSPV3.getMe();
+        // Username
+        String username = entry_TXTF_UserName.getText().toString();
+        if (username == null || username.equals("")){
+            username = KeysAndValues.PLAYER_USERNAME_DEFAULT;
+        }
+        bundle.putString(KeysAndValues.PLAYER_USERNAME_KEY      , username                                 );
+        bundle.putLong  (KeysAndValues.PLAYER_SCORE_KEY         , KeysAndValues.PLAYER_SCORE_DEFAULT       );
+        bundle.putDouble(KeysAndValues.PLAYER_LOCATION_LAT_KEY  , KeysAndValues.PLAYER_LOCATION_LAT_DEFAULT);
+        bundle.putDouble(KeysAndValues.PLAYER_LOCATION_LON_KEY  , KeysAndValues.PLAYER_LOCATION_LON_DEFAULT);
+
+        //Settings
+        bundle.putString(KeysAndValues.SETTINGS_PLAYER_CONTROL_KEY,
+                sp.getString(KeysAndValues.SETTINGS_PLAYER_CONTROL_KEY, KeysAndValues.SETTINGS_PLAYER_CONTROL_DEFAULT));
+        bundle.putString(KeysAndValues.SETTINGS_GAME_SPEED_KEY,
+                sp.getString(KeysAndValues.SETTINGS_GAME_SPEED_KEY, KeysAndValues.SETTINGS_GAME_SPEED_DEFAULT));
+
+        //TOP10 List
+        String TOP10DefaultList = new Gson().toJson(KeysAndValues.TOP10_DB_DEFAULT);
+        bundle.putString(KeysAndValues.TOP10_DB_KEY,
+                sp.getString(KeysAndValues.TOP10_DB_KEY, TOP10DefaultList));
     }
 
 }

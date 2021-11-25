@@ -4,7 +4,7 @@ import android.os.Handler;
 
 public class MyTicker {
     public static int DEF_DELAY = 1000;
-    private int Delay = 1000;
+    private int Delay;
     private Handler handler;
     private Runnable timerRunnable;
 
@@ -13,6 +13,7 @@ public class MyTicker {
 
     public MyTicker(Handler handler, Runnable timerRunnable){
         this();
+        setDelay(DEF_DELAY);
         this.handler = handler;
         this.timerRunnable = timerRunnable;
     }

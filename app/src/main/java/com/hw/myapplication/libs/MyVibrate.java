@@ -10,7 +10,7 @@ public class MyVibrate {
     public final int DEFAULT_DURATION = 500;
 
     private static MyVibrate me;
-    private Vibrator vibrator;
+    private final Vibrator vibrator;
 
     public static MyVibrate getMe() {
         return me;
@@ -20,11 +20,10 @@ public class MyVibrate {
         vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
-    public static MyVibrate initHelper(Context context) {
+    public static void initHelper(Context context) {
         if (me == null) {
             me = new MyVibrate(context);
         }
-        return me;
     }
 
     public void Vibrate(int vibrateDuration) {

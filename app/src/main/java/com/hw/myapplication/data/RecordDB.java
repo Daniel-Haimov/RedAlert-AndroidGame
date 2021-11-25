@@ -5,7 +5,9 @@ import java.util.ArrayList;
 public class RecordDB {
     private ArrayList<Record> records = new ArrayList<>();
 
-    public RecordDB() { }
+    public RecordDB() {
+
+    }
 
     public ArrayList<Record> getRecords() {
         return records;

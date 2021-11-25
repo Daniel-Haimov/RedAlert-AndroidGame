@@ -4,7 +4,7 @@ package com.hw.myapplication.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -15,7 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.hw.myapplication.callbacks.CallBack_MovePlayer;
 import com.hw.myapplication.data.Direction;
+import com.hw.myapplication.data.KeysAndValues;
+import com.hw.myapplication.fragments.Fragment_Buttons;
+import com.hw.myapplication.fragments.Fragment_Map;
 import com.hw.myapplication.libs.MyTicker;
 import com.hw.myapplication.libs.MyVibrate;
 import com.hw.myapplication.libs.NumberFormat;
@@ -24,7 +28,8 @@ import com.hw.myapplication.R;
 import java.util.Random;
 
 public class Activity_Game extends AppCompatActivity {
-    private Bundle savedInstanceState;
+
+    private Bundle bundle;
 
     private long        score       = 0      ;
     private final long  FRAME_SCORE = +100   ;
@@ -33,6 +38,7 @@ public class Activity_Game extends AppCompatActivity {
 
     private final   MyVibrate   vibrator        = MyVibrate.getMe() ;
     private final   Random      rand            = new Random()      ;
+
     private         MyTicker    ticker                              ;
     private final   Handler     handler         = new Handler()     ;
     private         Runnable    timerRunnable                       ;
@@ -62,23 +68,41 @@ public class Activity_Game extends AppCompatActivity {
     private final ImageView[][]   panel_IMG_stones    = new ImageView[NUM_OF_ROWS][NUM_OF_COLS]   ;
     private final ImageView[]     panel_IMG_players   = new ImageView[NUM_OF_COLS]                ;
     private TextView              panel_TXT_score                                                 ;
-    private ImageButton           panel_BTN_left                                                  ;
-    private ImageButton           panel_BTN_right                                                 ;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.savedInstanceState = savedInstanceState;
         setContentView(R.layout.activity_game);
+
+        this.bundle = getIntent().getBundleExtra(KeysAndValues.BUNDLE_KEY);
+
         findViews();
         initGame();
         settings();
     }
 
     private void settings() {
-        /* Default Values TODO */
+        // TODO check if buttons or ACC
+        initButtonsFragment();
+        initAccFragment();
+    }
+
+    private void initAccFragment() {
         // TODO
+    }
+
+    private void initButtonsFragment() {
+        /* Buttons Fragment */
+        Fragment_Buttons fragmentButtons = new Fragment_Buttons();
+        fragmentButtons.setActivity(this);
+        fragmentButtons.setCallBackMovePlayer((direction, speed) -> {
+            if(speed == 0){
+                speed = 5;
+            }
+            MovementController(direction);
+        });
+        getSupportFragmentManager().beginTransaction().add(R.id.panel_FRM_Controller, fragmentButtons).commit();
     }
 
     @Override
@@ -101,7 +125,6 @@ public class Activity_Game extends AppCompatActivity {
         panel_TXT_score = findViewById(R.id.panel_TXT_score);
         findPlayersView();
         findGameObjectsView();
-        findButtonsView();
     }
 
     private void setBackGround() {
@@ -144,16 +167,11 @@ public class Activity_Game extends AppCompatActivity {
         panel_IMG_stones[NUM_OF_ROWS - 1] = panel_IMG_players;
     }
 
-    private void findButtonsView() {
-        panel_BTN_left      = findViewById(R.id.panel_BTN_left );
-        panel_BTN_right     = findViewById(R.id.panel_BTN_right);
-    }
 
     // ~~~ INIT ~~~
 
     private void initGame() {
         initPlayer();
-        initButtons();
         initTicker();
     }
 
@@ -163,15 +181,6 @@ public class Activity_Game extends AppCompatActivity {
         fixPlayerRow();
     }
 
-    private void initButtons() {
-        panel_BTN_left.setOnClickListener(v -> {
-            MovementController(Direction.LEFT);
-        });
-
-        panel_BTN_right.setOnClickListener(v -> {
-            MovementController(Direction.RIGHT);
-        });
-    }
 
     private void MovementController(int direction){
         player_pos += direction;
@@ -313,13 +322,11 @@ public class Activity_Game extends AppCompatActivity {
     }
 
     private void gameOver() {
-        //TODO move to TOP10 Activity, update score in bundle
-        for (ImageView heart: panel_IMG_hearts) {
-            heart.setVisibility(View.VISIBLE);
-            lives = MAX_LIVES;
-        }
+        Intent myIntent = new Intent(this, Activity_Top10.class);
+        bundle.putLong(KeysAndValues.PLAYER_SCORE_KEY, score);
+        myIntent.putExtra(KeysAndValues.BUNDLE_KEY, bundle);
+        startActivity(myIntent);
+        finish();
     }
-
-
 
 }

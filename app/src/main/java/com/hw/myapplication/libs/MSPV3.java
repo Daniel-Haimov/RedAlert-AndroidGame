@@ -18,11 +18,10 @@ public class MSPV3 {
         sharedPreferences = context.getApplicationContext().getSharedPreferences(SP_FILE, Context.MODE_PRIVATE);
     }
 
-    public static MSPV3 initHelper(Context context) {
+    public static void initHelper(Context context) {
         if (me == null) {
             me = new MSPV3(context);
         }
-        return me;
     }
 
     public void putDouble(String KEY, double defValue) {

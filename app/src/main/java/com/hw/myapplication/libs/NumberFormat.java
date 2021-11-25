@@ -22,6 +22,7 @@ public class NumberFormat {
         if (value < 1000) return Long.toString(value); //deal with easy case
 
         Map.Entry<Long, String> e = suffixes.floorEntry(value);
+        assert e != null;
         Long divideBy = e.getKey();
         String suffix = e.getValue();
 

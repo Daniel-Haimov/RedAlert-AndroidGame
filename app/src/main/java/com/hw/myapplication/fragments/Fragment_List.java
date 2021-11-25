@@ -1,6 +1,6 @@
 package com.hw.myapplication.fragments;
 
-import android.annotation.SuppressLint;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +12,11 @@ import androidx.fragment.app.Fragment;
 
 import com.hw.myapplication.R;
 import com.hw.myapplication.callbacks.CallBack_List;
+import com.hw.myapplication.data.Record;
+import com.hw.myapplication.data.RecordDB;
+import com.hw.myapplication.libs.NumberFormat;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -20,6 +24,7 @@ public class Fragment_List extends Fragment {
 
     private AppCompatActivity activity;
     private CallBack_List callBackList;
+    private ArrayList<Record> records;
     private final int NUM_OF_ROWS = 10;
     private LinearLayout[]  list_ROW_rows       ;
     private TextView[]      list_TXT_userNames  ;
@@ -35,6 +40,12 @@ public class Fragment_List extends Fragment {
         this.callBackList = callBackList;
     }
 
+    public void setRecords(ArrayList<Record> records) {
+        this.records = records;
+    }
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
@@ -44,8 +55,14 @@ public class Fragment_List extends Fragment {
         return view;
     }
 
-    private void updateRows() {
-        // TODO
+    public void updateRows() {
+        int i = 0;
+        for (Record record: this.records) {
+            list_TXT_userNames[i].setText(record.getPlayerName());
+            list_TXT_scores[i].setText(NumberFormat.format(record.getScore()));
+            list_ROW_rows[i].setVisibility(View.VISIBLE);
+            i++;
+        }
     }
 
 
@@ -99,4 +116,5 @@ public class Fragment_List extends Fragment {
                 view.findViewById(R.id.list_ROW_row9),
         };
     }
+
 }
