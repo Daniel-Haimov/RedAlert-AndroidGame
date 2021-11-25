@@ -65,24 +65,19 @@ public class Activity_Entry extends AppCompatActivity {
         MSPV3 sp = MSPV3.getMe();
         // Username
         String username = entry_TXTF_UserName.getText().toString();
-        if (username == null || username.equals("")){
+        if (username.equals("")){
             username = KeysAndValues.PLAYER_USERNAME_DEFAULT;
         }
+
         bundle.putString(KeysAndValues.PLAYER_USERNAME_KEY      , username                                 );
         bundle.putLong  (KeysAndValues.PLAYER_SCORE_KEY         , KeysAndValues.PLAYER_SCORE_DEFAULT       );
         bundle.putDouble(KeysAndValues.PLAYER_LOCATION_LAT_KEY  , KeysAndValues.PLAYER_LOCATION_LAT_DEFAULT);
         bundle.putDouble(KeysAndValues.PLAYER_LOCATION_LON_KEY  , KeysAndValues.PLAYER_LOCATION_LON_DEFAULT);
 
         //Settings
-        bundle.putString(KeysAndValues.SETTINGS_PLAYER_CONTROL_KEY,
-                sp.getString(KeysAndValues.SETTINGS_PLAYER_CONTROL_KEY, KeysAndValues.SETTINGS_PLAYER_CONTROL_DEFAULT));
-        bundle.putString(KeysAndValues.SETTINGS_GAME_SPEED_KEY,
-                sp.getString(KeysAndValues.SETTINGS_GAME_SPEED_KEY, KeysAndValues.SETTINGS_GAME_SPEED_DEFAULT));
+        bundle.putString(KeysAndValues.SETTINGS_PLAYER_CONTROL_KEY, sp.getString(KeysAndValues.SETTINGS_PLAYER_CONTROL_KEY, KeysAndValues.SETTINGS_PLAYER_CONTROL_DEFAULT));
+        bundle.putInt(KeysAndValues.SETTINGS_GAME_SPEED_KEY, sp.getInt(KeysAndValues.SETTINGS_GAME_SPEED_KEY, KeysAndValues.SETTINGS_GAME_SPEED_DEFAULT));
 
-        //TOP10 List
-        String TOP10DefaultList = new Gson().toJson(KeysAndValues.TOP10_DB_DEFAULT);
-        bundle.putString(KeysAndValues.TOP10_DB_KEY,
-                sp.getString(KeysAndValues.TOP10_DB_KEY, TOP10DefaultList));
     }
 
 }

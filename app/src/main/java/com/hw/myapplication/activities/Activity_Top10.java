@@ -3,7 +3,6 @@ package com.hw.myapplication.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.hw.myapplication.callbacks.CallBack_List;
@@ -15,7 +14,6 @@ import com.hw.myapplication.fragments.Fragment_List;
 import com.hw.myapplication.fragments.Fragment_Map;
 import com.hw.myapplication.R;
 import com.hw.myapplication.libs.GPS;
-import com.hw.myapplication.libs.MSPV3;
 import com.hw.myapplication.libs.NumberFormat;
 
 public class Activity_Top10 extends AppCompatActivity {
@@ -58,7 +56,7 @@ public class Activity_Top10 extends AppCompatActivity {
     }
 
     private void updateRecordDB() {
-        this.recordDB = new Gson().fromJson(bundle.getString(KeysAndValues.TOP10_DB_KEY), RecordDB.class);
+        recordDB = RecordDBController.receiveRecordDBFromSP();
 
         long score = bundle.getLong(KeysAndValues.PLAYER_SCORE_KEY, KeysAndValues.PLAYER_SCORE_DEFAULT);
         if (score == KeysAndValues.PLAYER_SCORE_DEFAULT){
@@ -74,13 +72,8 @@ public class Activity_Top10 extends AppCompatActivity {
     private void updateCurrentRecord(double lat, double lon, long score) {
         String playerName   = bundle.getString(KeysAndValues.PLAYER_USERNAME_KEY    );
         currentRecord = new Record().setPlayerName(playerName).setScore(score).setLat(lat).setLon(lon);
-        RecordDBController.updateRecord(recordDB.getRecords(), currentRecord);
-        saveRecordDB();
+        RecordDBController.updateRecord(recordDB, currentRecord);
         refreshList();
-    }
-
-    private void saveRecordDB() {
-        MSPV3.getMe().putString(KeysAndValues.TOP10_DB_KEY, new Gson().toJson(recordDB));
     }
 
     private void refreshList() {

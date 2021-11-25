@@ -34,14 +34,10 @@ public class Fragment_ACC extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_acc, container, false);
-        findViews(view);
         initACC();
-
         return view;
     }
 
-    private void findViews(View view) {
-    }
 
     private void initACC() {
         sensorManager = (SensorManager) activity.getSystemService(Context.SENSOR_SERVICE);
@@ -51,7 +47,7 @@ public class Fragment_ACC extends Fragment {
     private SensorEventListener accSensorEventListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
-
+            //TODO make logic better
             float x_new = event.values[0];
             float y_new = event.values[1];
             float z_new = event.values[2];

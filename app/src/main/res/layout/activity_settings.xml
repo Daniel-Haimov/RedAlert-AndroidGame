@@ -43,7 +43,7 @@
         app:layout_constraintTop_toTopOf="@+id/settings_SWC_control" />
 
     <Switch
-        android:id="@+id/settings_SWC_control2"
+        android:id="@+id/settings_SWC_speed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -54,25 +54,39 @@
         app:layout_constraintTop_toBottomOf="@+id/settings_SWC_control" />
 
     <TextView
+        android:id="@+id/settings_TXT_slow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="SLOW"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/settings_SWC_control2"
-        app:layout_constraintEnd_toStartOf="@+id/settings_SWC_control2"
+        app:layout_constraintBottom_toBottomOf="@+id/settings_SWC_speed"
+        app:layout_constraintEnd_toStartOf="@+id/settings_SWC_speed"
         app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toTopOf="@+id/settings_SWC_control2" />
+        app:layout_constraintTop_toTopOf="@+id/settings_SWC_speed" />
 
     <TextView
+        android:id="@+id/settings_TXT_fast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="FAST"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/settings_SWC_control2"
-        app:layout_constraintStart_toEndOf="@+id/settings_SWC_control2"
-        app:layout_constraintTop_toTopOf="@+id/settings_SWC_control2" />
+        app:layout_constraintBottom_toBottomOf="@+id/settings_SWC_speed"
+        app:layout_constraintStart_toEndOf="@+id/settings_SWC_speed"
+        app:layout_constraintTop_toTopOf="@+id/settings_SWC_speed" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="SETTINGS"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

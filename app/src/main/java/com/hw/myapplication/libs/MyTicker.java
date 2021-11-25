@@ -30,18 +30,14 @@ public class MyTicker {
         this.Delay = delay;
     }
 
-    public void setDelay(String delayValue) {
-        switch (delayValue){
-            case KeysAndValues.SETTINGS_GAME_SPEED_SLOW:
-                setDelay(DEF_DELAY * 2);
-                break;
-            case KeysAndValues.SETTINGS_GAME_SPEED_FAST:
-                setDelay(DEF_DELAY / 2);
-                break;
-        }
+    public void updateDelay(int delay) {
+        //TODO change Speed
+        updateTicker();
     }
 
-
+    private void updateTicker() {
+//        timerRunnable.
+    }
 
 
     public void startTicker() {

@@ -14,5 +14,10 @@ public class App extends Application {
         MSPV3.initHelper(this);
         GPS.initHelper(this);
         MyVibrate.initHelper(this);
+        /*
+        TODO
+            change coin icon
+            change sounds for stone and coin
+         */
     }
 }

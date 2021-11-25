@@ -5,6 +5,7 @@ package com.hw.myapplication.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -67,6 +68,9 @@ public class Activity_Game extends AppCompatActivity {
     private final ImageView[]     panel_IMG_players   = new ImageView[NUM_OF_COLS]                ;
     private TextView              panel_TXT_score                                                 ;
 
+    private MediaPlayer stoneHitSound   ;
+    private MediaPlayer coinHitSound    ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +80,9 @@ public class Activity_Game extends AppCompatActivity {
         this.bundle = getIntent().getBundleExtra(KeysAndValues.BUNDLE_KEY);
 
         findViews();
-        initGame();
         settings();
+        initPlayer();
+        initSound();
     }
 
     private void settings() {
@@ -92,15 +97,15 @@ public class Activity_Game extends AppCompatActivity {
                 ticker.setDelay(speed);
             }
         };
-
+        int speed = KeysAndValues.SETTINGS_GAME_SPEED_DEFAULT;
         String controller = bundle.getString(KeysAndValues.SETTINGS_PLAYER_CONTROL_KEY, KeysAndValues.SETTINGS_PLAYER_CONTROL_DEFAULT);
         if (controller.equals(KeysAndValues.SETTINGS_PLAYER_CONTROL_BUTTONS)){
             initButtonsFragment(cb);
-            String speed = bundle.getString(KeysAndValues.SETTINGS_GAME_SPEED_KEY, KeysAndValues.SETTINGS_GAME_SPEED_DEFAULT);
-            ticker.setDelay(speed);
+            speed = bundle.getInt(KeysAndValues.SETTINGS_GAME_SPEED_KEY);
         }else{
             initAccFragment(cb);
         }
+        initTicker(speed);
     }
 
     private void initAccFragment(CallBack_MovePlayer cb) {
@@ -184,17 +189,16 @@ public class Activity_Game extends AppCompatActivity {
 
     // ~~~ INIT ~~~
 
-    private void initGame() {
-        initPlayer();
-        initTicker();
-    }
-
     //init the player in begin in the middle
     private void initPlayer() {
         player_pos = NUM_OF_COLS / 2;
         fixPlayerRow();
     }
 
+    private void initSound() {
+        stoneHitSound = MediaPlayer.create(this, R.raw.stone_sound);
+        coinHitSound  = MediaPlayer.create(this, R.raw.coin_sound );
+    }
 
     private void MovementController(int direction){
         player_pos += direction;
@@ -210,13 +214,14 @@ public class Activity_Game extends AppCompatActivity {
     }
 
 
-    private void initTicker() {
+    private void initTicker(int speed) {
         timerRunnable = () -> {
             updateClockView();
-            handler.postDelayed(timerRunnable, MyTicker.DEF_DELAY);
+            handler.postDelayed(timerRunnable, speed);
         };
         ticker = new MyTicker(handler, timerRunnable);
     }
+
 
     // ~~~ UPDATE VIEW LOGIC ~~~
 
@@ -260,7 +265,7 @@ public class Activity_Game extends AppCompatActivity {
         updateScoreBy(STONE_SCORE);
         vibrator.Vibrate();
         lowerLife();
-        // TODO add sound
+        stoneHitSound.start();
     }
 
     private void lowerLife() {
@@ -276,7 +281,7 @@ public class Activity_Game extends AppCompatActivity {
         hitView(COIN_TAG);
         showToast(HIT_BY_COIN_TOAST_MSG);
         updateScoreBy(COIN_SCORE);
-        // TODO add sound
+        coinHitSound.start();
     }
 
     private void showToast(String str) {
