@@ -5,15 +5,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.hw.myapplication.callbacks.CallBack_List;
-import com.hw.myapplication.callbacks.CallBack_Map;
+import com.hw.myapplication.data.Record;
+import com.hw.myapplication.data.RecordDB;
 import com.hw.myapplication.fragments.Fragment_List;
 import com.hw.myapplication.fragments.Fragment_Map;
 import com.hw.myapplication.R;
+import com.hw.myapplication.libs.NumberFormat;
 
 public class Activity_Top10 extends AppCompatActivity {
 
     private Fragment_List fragmentList;
     private Fragment_Map fragmentMap;
+    private RecordDB recordDB;
+
+    CallBack_List callBackList = (index) -> {
+        Record record       = recordDB.getRecords().get(index);
+        String playerName   = record.getPlayerName();
+        double lat          = record.getLat();
+        double lon          = record.getLon();
+        String score        = NumberFormat.format(record.getScore());
+        fragmentMap.setLocation(playerName, score, lat, lon);
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,33 +36,14 @@ public class Activity_Top10 extends AppCompatActivity {
         fragmentList = new Fragment_List();
         fragmentList.setActivity(this);
         fragmentList.setCallBackList(callBackList);
+        // TODO update TOP10 records, send TOP10 List to fragment
         getSupportFragmentManager().beginTransaction().add(R.id.frame1, fragmentList).commit();
 
         /* GoogleMap Fragment */
         fragmentMap = new Fragment_Map();
         fragmentMap.setActivity(this);
-        fragmentMap.setCallBackMap(callBack_map);
         getSupportFragmentManager().beginTransaction().add(R.id.frame2, fragmentMap).commit();
-
-
     }
-
-
-    CallBack_Map callBack_map = new CallBack_Map() {
-        // unused
-    };
-
-    CallBack_List callBackList = new CallBack_List() {
-        @Override
-        public void rowSelected(String name) {
-            String[] values = name.split(",");
-            String playerName = values[0];
-            double lat = Double.parseDouble(values[1]);
-            double lan = Double.parseDouble(values[2]);
-            int score = Integer.parseInt(values[3]);
-            fragmentMap.setLocation(lat, lan, playerName, score);
-        }
-    };
 
     @Override
     protected void onStart() {

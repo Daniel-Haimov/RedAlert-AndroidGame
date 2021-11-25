@@ -1,5 +1,6 @@
 package com.hw.myapplication.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,29 +40,25 @@ public class Fragment_List extends Fragment {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         findViews(view);
         initViews();
+        updateRows();
         return view;
+    }
+
+    private void updateRows() {
+        // TODO
     }
 
 
     private void initViews() {
-        for (int i = 0; i < NUM_OF_ROWS; i++) {
-            list_ROW_rows[i].setOnClickListener(setOnMap(i));
+        for (int index = 0; index < NUM_OF_ROWS; index++) {
+            list_ROW_rows[index].setOnClickListener(setOnMap(index));
         }
     }
 
-    private View.OnClickListener setOnMap(int i) {
+    private View.OnClickListener setOnMap(int index) {
         return view -> {
-            String detailes = getDetailes(i);
-            callBackList.rowSelected(detailes);
+            callBackList.rowSelected(index);
         };
-    }
-
-    private String getDetailes(int i) {
-        String userName = (String) list_TXT_userNames[i].getText();
-        double lat = 32 + 0.5 * random.nextDouble();//31.534043;
-        double lan = 34 + 0.5 * random.nextDouble();//34.604132;
-        int score = Integer.parseInt((String) list_TXT_scores[i].getText());
-        return String.format("%s,%f,%f,%d", userName, lat, lan, score);
     }
 
     private void findViews(View view) {

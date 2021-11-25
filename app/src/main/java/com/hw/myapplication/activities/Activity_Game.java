@@ -18,29 +18,45 @@ import com.bumptech.glide.Glide;
 import com.hw.myapplication.data.Direction;
 import com.hw.myapplication.libs.MyTicker;
 import com.hw.myapplication.libs.MyVibrate;
+import com.hw.myapplication.libs.NumberFormat;
 import com.hw.myapplication.R;
 
 import java.util.Random;
 
 public class Activity_Game extends AppCompatActivity {
+    private Bundle savedInstanceState;
 
-    private final int MAX_LIVES = 3 ;
-    private int lives = MAX_LIVES   ;
-    private int score = 0           ;
+    private long        score       = 0      ;
+    private final long  FRAME_SCORE = +100   ;
+    private final long  COIN_SCORE  = +500   ;
+    private final long  STONE_SCORE = -2500  ;
 
-    private final MyVibrate vibrator = MyVibrate.getMe();
+    private final   MyVibrate   vibrator        = MyVibrate.getMe() ;
+    private final   Random      rand            = new Random()      ;
+    private         MyTicker    ticker                              ;
+    private final   Handler     handler         = new Handler()     ;
+    private         Runnable    timerRunnable                       ;
 
-    private final int NUM_OF_ROWS = 8 + 1   ; // 1 for players row
-    private final int NUM_OF_COLS = 5       ;
-    private boolean row_with_stone = true   ;
-    private final Random rand = new Random()      ;
-    private int player_pos;
+    private final int   NUM_OF_ROWS = 8 + 1     ; /* 1 for players row */
+    private final int   NUM_OF_COLS = 5         ;
+    private final int   MAX_LIVES = 3           ;
+    private int         lives = MAX_LIVES       ;
+    private int         player_pos              ;
+    private boolean     row_with_stone = true   ;
 
-    private MyTicker ticker                 ;
-    final Handler handler = new Handler()   ;
-    private Runnable timerRunnable          ;
+    private final int STONE_WEIGHT  = 5 ;
+    private final int COIN_WEIGHT   = 2 ;
 
-    private final int             STONE_DRAW_ROTATION = 135                                       ;
+    private final String STONE_TAG              = "STONE_TAG"   ;
+    private final String HIT_BY_STONE_TOAST_MSG = "HIT"         ;
+    private final String COIN_TAG               = "COIN_TAG"    ;
+    private final String HIT_BY_COIN_TOAST_MSG  = "COIN"        ;
+
+    private final int             PLAYER_DRAW_ROTATION      = 0     ;
+    private final int             STONE_DRAW_ROTATION       = 135   ;
+    private final int             HIT_STONE_DRAW_ROTATION   = 135   ;
+    private final int             COIN_DRAW_ROTATION        = 0     ;
+    private final int             HIT_COIN_DRAW_ROTATION    = 0     ;
 
     private final ImageView[]     panel_IMG_hearts    = new ImageView[MAX_LIVES]                  ;
     private final ImageView[][]   panel_IMG_stones    = new ImageView[NUM_OF_ROWS][NUM_OF_COLS]   ;
@@ -53,9 +69,16 @@ public class Activity_Game extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.savedInstanceState = savedInstanceState;
         setContentView(R.layout.activity_game);
         findViews();
         initGame();
+        settings();
+    }
+
+    private void settings() {
+        /* Default Values TODO */
+        // TODO
     }
 
     @Override
@@ -83,7 +106,7 @@ public class Activity_Game extends AppCompatActivity {
 
     private void setBackGround() {
         ImageView panel_IMG_BG = findViewById(R.id.panel_IMG_backGround);
-        Glide.with(Activity_Game.this).load(R.drawable.bg).centerCrop().into(panel_IMG_BG);
+        Glide.with(Activity_Game.this).load(R.drawable.bg_game_5roads).centerCrop().into(panel_IMG_BG);
     }
 
     private void findHeartsView(){
@@ -134,6 +157,7 @@ public class Activity_Game extends AppCompatActivity {
         initTicker();
     }
 
+    //init the player in begin in the middle
     private void initPlayer() {
         player_pos = NUM_OF_COLS / 2;
         fixPlayerRow();
@@ -141,24 +165,27 @@ public class Activity_Game extends AppCompatActivity {
 
     private void initButtons() {
         panel_BTN_left.setOnClickListener(v -> {
-            if (player_pos > 0){
-                MovementController(Direction.LEFT);
-            }
+            MovementController(Direction.LEFT);
         });
 
         panel_BTN_right.setOnClickListener(v -> {
-            if (player_pos < NUM_OF_COLS - 1){
-                MovementController(Direction.RIGHT);
-            }
+            MovementController(Direction.RIGHT);
         });
     }
 
     private void MovementController(int direction){
-        panel_IMG_players[player_pos    ].setImageResource(R.drawable.ic_player );
-        panel_IMG_players[player_pos    ].setVisibility(View.INVISIBLE          );
         player_pos += direction;
+        if (player_pos < 0 || player_pos >= NUM_OF_COLS){
+            player_pos -= direction;
+            return;
+        }
+
+        ImageView playerOld = panel_IMG_players[player_pos - direction];
+        playerOld.setImageResource(R.drawable.ic_player );
+        playerOld.setVisibility(View.INVISIBLE          );
         checkHits();
     }
+
 
     private void initTicker() {
         timerRunnable = () -> {
@@ -171,7 +198,7 @@ public class Activity_Game extends AppCompatActivity {
     // ~~~ UPDATE VIEW LOGIC ~~~
 
     private void updateClockView() {
-        updateScoreBy(10);
+        updateScoreBy(FRAME_SCORE);
         updateView();
         updateFirstRow();
         checkHits();
@@ -180,10 +207,13 @@ public class Activity_Game extends AppCompatActivity {
     private void updateView() {
         for (int i = NUM_OF_ROWS - 1; i > 0; i--)
             for (int j = 0; j < NUM_OF_COLS; j++) {
-                Drawable id = panel_IMG_stones[i - 1][j].getDrawable();
-                panel_IMG_stones[i][j].setImageDrawable(id);
-                panel_IMG_stones[i][j].setVisibility(panel_IMG_stones[i - 1][j].getVisibility() );
-                panel_IMG_stones[i][j].setRotation  (panel_IMG_stones[i - 1][j].getRotation()   );
+                ImageView objOld = panel_IMG_stones[i - 1][j];
+                ImageView objNew = panel_IMG_stones[i][j];
+
+                objNew.setImageDrawable (objOld.getDrawable()   )   ;
+                objNew.setVisibility    (objOld.getVisibility() )   ;
+                objNew.setRotation      (objOld.getRotation()   )   ;
+                objNew.setTag           (objOld.getTag()        )   ;
             }
     }
 
@@ -191,53 +221,61 @@ public class Activity_Game extends AppCompatActivity {
         // If there is object in player position
         ImageView obj = panel_IMG_stones[NUM_OF_ROWS -1][player_pos];
         if (obj.getVisibility() == View.VISIBLE) {
-            //TODO check if obj is stone or coin
-            if (obj.getRotation() == STONE_DRAW_ROTATION){
+            if (obj.getTag().equals(STONE_TAG)) {
                 hitByStone();
-            }else{
+            } else {
                 hitByCoin();
             }
-        }else
-            hitView(false);
+        } else {
+            fixPlayerRow();
+        }
     }
 
     private void hitByStone() {
-        hitView(true);
-        showToast("HIT");
+        hitView(STONE_TAG);
+        showToast(HIT_BY_STONE_TOAST_MSG);
+        updateScoreBy(STONE_SCORE);
         vibrator.Vibrate();
-        updateScoreBy(-100);
+        lowerLife();
+        // TODO add sound
+    }
+
+    private void lowerLife() {
         lives--;
-        if (lives <= 0)//remove the '=' after changes unlimited lives
+        if (lives <= 0) {//remove the '=' after changes unlimited lives
             gameOver();
-        else
+        } else {
             panel_IMG_hearts[lives].setVisibility(View.INVISIBLE);
+        }
     }
 
     private void hitByCoin(){
-        // TODO
-        updateScoreBy(50);
-        showToast("COIN");
+        hitView(COIN_TAG);
+        showToast(HIT_BY_COIN_TOAST_MSG);
+        updateScoreBy(COIN_SCORE);
+        // TODO add sound
     }
 
     private void showToast(String str) {
         Toast.makeText(Activity_Game.this, str, Toast.LENGTH_SHORT).show();
     }
 
-    private void hitView(boolean hit) {
-        if(hit){
-            int HIT_DRAW_ROTATION = 0;
-            panel_IMG_players[player_pos].setRotation       (HIT_DRAW_ROTATION);
-            panel_IMG_players[player_pos].setImageResource  (R.drawable.ic_hit_png  );
+    private void hitView(String tag) {
+        ImageView player = panel_IMG_players[player_pos];
+        if(tag.equals(STONE_TAG)){
+            player.setRotation       (HIT_STONE_DRAW_ROTATION);
+            player.setImageResource  (R.drawable.ic_stone_hit);
         }else{
-            fixPlayerRow();
+            player.setRotation       (HIT_COIN_DRAW_ROTATION);
+            player.setImageResource  (R.drawable.ic_coin_hit);
         }
     }
 
     private void fixPlayerRow() {
-        int PLAYER_DRAW_ROTATION = 0;
-        panel_IMG_players[player_pos].setRotation       (PLAYER_DRAW_ROTATION);
-        panel_IMG_players[player_pos].setImageResource  (R.drawable.ic_player);
-        panel_IMG_players[player_pos].setVisibility     (View.VISIBLE        );
+        ImageView player = panel_IMG_players[player_pos];
+        player.setRotation       (PLAYER_DRAW_ROTATION);
+        player.setImageResource  (R.drawable.ic_player);
+        player.setVisibility     (View.VISIBLE        );
     }
 
     private void updateFirstRow() {
@@ -250,6 +288,16 @@ public class Activity_Game extends AppCompatActivity {
 
     private void randomizeFirstRow() {
         int col = rand.nextInt(NUM_OF_COLS);
+        int obj = rand.nextInt(STONE_WEIGHT + COIN_WEIGHT);
+        if (obj < STONE_WEIGHT) { // generate stone
+            panel_IMG_stones[0][col].setImageResource   (R.drawable.ic_stone    )   ;
+            panel_IMG_stones[0][col].setRotation        (STONE_DRAW_ROTATION    )   ;
+            panel_IMG_stones[0][col].setTag             (STONE_TAG              )   ;
+        }else { // generate coin
+            panel_IMG_stones[0][col].setImageResource   (R.drawable.ic_coin     )   ;
+            panel_IMG_stones[0][col].setRotation        (COIN_DRAW_ROTATION     )   ;
+            panel_IMG_stones[0][col].setTag             (COIN_TAG               )   ;
+        }
         panel_IMG_stones[0][col].setVisibility(View.VISIBLE);
     }
 
@@ -258,33 +306,14 @@ public class Activity_Game extends AppCompatActivity {
             panel_IMG_stones[0][i].setVisibility(View.INVISIBLE);
     }
 
-    private void updateScoreBy(int value){
-        score = Math.max(score + value, 0);
-        String str = convertScore(score);
-
+    private void updateScoreBy(long value){
+        score = Math.max(score + value, 0L);
+        String str = NumberFormat.format(score);
         panel_TXT_score.setText(str);
     }
 
-    private String convertScore(int score) {
-        String str = "";
-        String LEFT   = "";
-        String RIGHT  = "";
-        if(score >= 1000000){
-            LEFT    += score / 1000000;
-            RIGHT   += ((score % 1000000) / 10000);
-            str     += LEFT + "." + RIGHT + "M";
-        }else if(score >= 1000){
-            LEFT    += score / 1000;
-            RIGHT   += ((score % 1000) / 10);
-            str     += LEFT + "." + RIGHT + "K";
-        }else{
-            str += score;
-        }
-        return str;
-    }
-
     private void gameOver() {
-        //TODO
+        //TODO move to TOP10 Activity, update score in bundle
         for (ImageView heart: panel_IMG_hearts) {
             heart.setVisibility(View.VISIBLE);
             lives = MAX_LIVES;

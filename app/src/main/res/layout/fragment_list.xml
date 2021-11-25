@@ -48,17 +48,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#fe5a3b"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/list_TXT_userName0"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:text="Daniel Haimov"
-                    android:gravity="center_vertical"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
                     android:textSize="30sp" />
 
                 <TextView
@@ -66,7 +66,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="10000"
                     android:gravity="center"
                     android:textSize="30sp" />
 
@@ -77,17 +76,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#fe7259"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/list_TXT_userName1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:text="Shahar Hikri"
-                    android:gravity="center_vertical"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
                     android:textSize="30sp" />
 
                 <TextView
@@ -95,7 +94,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="7000"
                     android:gravity="center"
                     android:textSize="30sp" />
 
@@ -106,17 +104,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#fe5a3b"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/list_TXT_userName2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:text="Omer Rath"
-                    android:gravity="center_vertical"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
                     android:textSize="30sp" />
 
                 <TextView
@@ -124,7 +122,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="6999"
                     android:gravity="center"
                     android:textSize="30sp" />
 
@@ -135,17 +132,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#fe7259"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/list_TXT_userName3"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:text="Jane Roe With Very Long Name"
-                    android:gravity="center_vertical"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
                     android:textSize="30sp" />
 
                 <TextView
@@ -153,7 +150,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="6000"
                     android:gravity="center"
                     android:textSize="30sp" />
 
@@ -164,17 +160,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#fe5a3b"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/list_TXT_userName4"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:text="Arad Pelled"
-                    android:gravity="center_vertical"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
                     android:textSize="30sp" />
 
                 <TextView
@@ -182,7 +178,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="5000"
                     android:gravity="center"
                     android:textSize="30sp" />
 
@@ -193,17 +188,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#fe7259"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/list_TXT_userName5"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:text="Guy Isakov"
-                    android:gravity="center_vertical"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
                     android:textSize="30sp" />
 
                 <TextView
@@ -211,7 +206,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="4700"
                     android:gravity="center"
                     android:textSize="30sp" />
 
@@ -222,17 +216,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#fe5a3b"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/list_TXT_userName6"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:text="Tom Cohen"
-                    android:gravity="center_vertical"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
                     android:textSize="30sp" />
 
                 <TextView
@@ -240,7 +234,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="4200"
                     android:gravity="center"
                     android:textSize="30sp" />
 
@@ -251,17 +244,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#fe7259"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/list_TXT_userName7"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:text="Maya Gembom"
-                    android:gravity="center_vertical"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
                     android:textSize="30sp" />
 
                 <TextView
@@ -269,7 +262,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="3800"
                     android:gravity="center"
                     android:textSize="30sp" />
 
@@ -280,17 +272,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#fe5a3b"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/list_TXT_userName8"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:text="Dorin Open"
-                    android:gravity="center_vertical"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
                     android:textSize="30sp" />
 
                 <TextView
@@ -298,7 +290,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="3000"
                     android:gravity="center"
                     android:textSize="30sp" />
 
@@ -309,17 +300,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#fe7259"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/list_TXT_userName9"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:text="Rony ???"
-                    android:gravity="center_vertical"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
                     android:textSize="30sp" />
 
                 <TextView
@@ -327,7 +318,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="-2000"
                     android:gravity="center"
                     android:textSize="30sp" />
 

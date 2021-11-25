@@ -27,35 +27,30 @@ public class Activity_Entry extends AppCompatActivity {
 
     private void findViews() {
         entry_TXTF_UserName = findViewById(R.id.entry_TXTF_UserName );
+
         entry_BTN_Play      = findViewById(R.id.entry_BTN_Play      );
         entry_BTN_Settings  = findViewById(R.id.entry_BTN_Settings  );
         entry_BTN_Top10     = findViewById(R.id.entry_BTN_Top10     );
     }
 
     private void initButtons() {
-        entry_BTN_Play          .setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startGame(Activity_Game.class);
-            }
+        entry_BTN_Play.setOnClickListener(v -> {
+            startGame(Activity_Game.class);
         });
-        entry_BTN_Settings      .setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startGame(Activity_Settings.class);
-            }
+        entry_BTN_Settings.setOnClickListener(v -> {
+            startGame(Activity_Settings.class);
         });
-        entry_BTN_Top10         .setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startGame(Activity_Top10.class);
-            }
+        entry_BTN_Top10.setOnClickListener(v -> {
+            startGame(Activity_Top10.class);
         });
     }
 
     private void startGame(Class activity) {
         Intent myIntent = new Intent(this, activity);
         Bundle bundle = new Bundle();
+        // TODO add values to Bundle
+
+
         myIntent.putExtra("Bundle", bundle);
         startActivity(myIntent);
     }

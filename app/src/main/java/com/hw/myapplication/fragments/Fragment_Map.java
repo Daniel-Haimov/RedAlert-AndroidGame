@@ -17,14 +17,12 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.hw.myapplication.R;
-import com.hw.myapplication.callbacks.CallBack_Map;
 
 public class Fragment_Map extends Fragment {
 
-    MapView mMapView;
+    private MapView mMapView;
     private GoogleMap googleMap;
     private AppCompatActivity activity;
-    private CallBack_Map callBackMap;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -79,15 +77,13 @@ public class Fragment_Map extends Fragment {
         this.activity = activity;
     }
 
-    public void setCallBackMap(CallBack_Map callBackMap) {
-        this.callBackMap = callBackMap;
-    }
 
-    public void setLocation(double lat, double lan, String player, int score) {
+    public void setLocation(String player, String score, double lat, double lon) {
         googleMap.clear();
         // For dropping a marker at a point on the Map
-        LatLng location = new LatLng(lat, lan);
-        googleMap.addMarker(new MarkerOptions().position(location).title(player).snippet("score: " + score));
+        LatLng location = new LatLng(lat, lon);
+        score = "score: " + score;
+        googleMap.addMarker(new MarkerOptions().position(location).title(player).snippet(score));
 
         // For zooming automatically to the location of the marker
         CameraPosition cameraPosition = new CameraPosition.Builder().target(location).zoom(12).build();
