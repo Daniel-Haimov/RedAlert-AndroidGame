@@ -41,11 +41,11 @@ public class Fragment_Buttons extends Fragment {
 
     private void initButtons() {
         panel_BTN_left.setOnClickListener(v -> {
-            callBackMovePlayer.movePlayer(Direction.LEFT, 0);
+            callBackMovePlayer.movePlayer(Direction.LEFT);
         });
 
         panel_BTN_right.setOnClickListener(v -> {
-            callBackMovePlayer.movePlayer(Direction.RIGHT, 0);
+            callBackMovePlayer.movePlayer(Direction.RIGHT);
         });
     }
 

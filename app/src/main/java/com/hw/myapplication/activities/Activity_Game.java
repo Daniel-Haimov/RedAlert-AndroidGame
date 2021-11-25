@@ -9,17 +9,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.hw.myapplication.callbacks.CallBack_MovePlayer;
-import com.hw.myapplication.data.Direction;
 import com.hw.myapplication.data.KeysAndValues;
+import com.hw.myapplication.fragments.Fragment_ACC;
 import com.hw.myapplication.fragments.Fragment_Buttons;
-import com.hw.myapplication.fragments.Fragment_Map;
 import com.hw.myapplication.libs.MyTicker;
 import com.hw.myapplication.libs.MyVibrate;
 import com.hw.myapplication.libs.NumberFormat;
@@ -32,9 +30,9 @@ public class Activity_Game extends AppCompatActivity {
     private Bundle bundle;
 
     private long        score       = 0      ;
-    private final long  FRAME_SCORE = +100   ;
+    private final long  FRAME_SCORE = +250   ;
     private final long  COIN_SCORE  = +500   ;
-    private final long  STONE_SCORE = -2500  ;
+    private final long  STONE_SCORE = -1000  ;
 
     private final   MyVibrate   vibrator        = MyVibrate.getMe() ;
     private final   Random      rand            = new Random()      ;
@@ -83,25 +81,41 @@ public class Activity_Game extends AppCompatActivity {
     }
 
     private void settings() {
-        // TODO check if buttons or ACC
-        initButtonsFragment();
-        initAccFragment();
+        CallBack_MovePlayer cb = new CallBack_MovePlayer() {
+            @Override
+            public void movePlayer(int direction) {
+                MovementController(direction);
+            }
+
+            @Override
+            public void gameSpeed(int speed) {
+                ticker.setDelay(speed);
+            }
+        };
+
+        String controller = bundle.getString(KeysAndValues.SETTINGS_PLAYER_CONTROL_KEY, KeysAndValues.SETTINGS_PLAYER_CONTROL_DEFAULT);
+        if (controller.equals(KeysAndValues.SETTINGS_PLAYER_CONTROL_BUTTONS)){
+            initButtonsFragment(cb);
+            String speed = bundle.getString(KeysAndValues.SETTINGS_GAME_SPEED_KEY, KeysAndValues.SETTINGS_GAME_SPEED_DEFAULT);
+            ticker.setDelay(speed);
+        }else{
+            initAccFragment(cb);
+        }
     }
 
-    private void initAccFragment() {
-        // TODO
+    private void initAccFragment(CallBack_MovePlayer cb) {
+        /* ACC Control Fragment */
+        Fragment_ACC fragmentACC = new Fragment_ACC();
+        fragmentACC.setActivity(this);
+        fragmentACC.setCallBackMovePlayer(cb);
+        getSupportFragmentManager().beginTransaction().add(R.id.panel_FRM_Controller, fragmentACC).commit();
     }
 
-    private void initButtonsFragment() {
+    private void initButtonsFragment(CallBack_MovePlayer cb) {
         /* Buttons Fragment */
         Fragment_Buttons fragmentButtons = new Fragment_Buttons();
         fragmentButtons.setActivity(this);
-        fragmentButtons.setCallBackMovePlayer((direction, speed) -> {
-            if(speed == 0){
-                speed = 5;
-            }
-            MovementController(direction);
-        });
+        fragmentButtons.setCallBackMovePlayer(cb);
         getSupportFragmentManager().beginTransaction().add(R.id.panel_FRM_Controller, fragmentButtons).commit();
     }
 

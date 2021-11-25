@@ -29,7 +29,7 @@ public class KeysAndValues {
     /**
      * DEFAULTS VALUES
      */
-    public final static String    SETTINGS_PLAYER_CONTROL_DEFAULT    = SETTINGS_PLAYER_CONTROL_BUTTONS;
+    public final static String    SETTINGS_PLAYER_CONTROL_DEFAULT    = SETTINGS_PLAYER_CONTROL_ACC;
     public final static String    SETTINGS_GAME_SPEED_DEFAULT        = SETTINGS_GAME_SPEED_SLOW       ;
     public final static String    PLAYER_USERNAME_DEFAULT            = "Jane Roe"                     ;
     public final static long      PLAYER_SCORE_DEFAULT               = -1L                            ;

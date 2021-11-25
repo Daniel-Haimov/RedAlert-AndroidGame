@@ -660,7 +660,6 @@
         </LinearLayout>
 
         <!-- ### controls Layout ### -->
-        <!--        TODO            -->
         <FrameLayout
             android:id="@+id/panel_FRM_Controller"
             android:layout_width="match_parent"
