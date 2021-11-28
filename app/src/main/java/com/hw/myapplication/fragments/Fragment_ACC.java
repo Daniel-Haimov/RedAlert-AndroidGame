@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import com.hw.myapplication.R;
 import com.hw.myapplication.callbacks.CallBack_MovePlayer;
 import com.hw.myapplication.data.Direction;
+import com.hw.myapplication.data.KeysAndValues;
 
 
 public class Fragment_ACC extends Fragment {
@@ -26,10 +27,6 @@ public class Fragment_ACC extends Fragment {
 
     private SensorManager sensorManager;
     private Sensor accSensor;
-
-    private float x_old = 0;
-    private float y_old = 0;
-    private float z_old = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,27 +41,23 @@ public class Fragment_ACC extends Fragment {
         accSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
     }
 
-    private SensorEventListener accSensorEventListener = new SensorEventListener() {
+    private final SensorEventListener accSensorEventListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
-            //TODO make logic better
-            float x_new = event.values[0];
-            float y_new = event.values[1];
-            float z_new = event.values[2];
+            float x = event.values[0];
+            float y = event.values[1];
 
-            float dx = x_new - x_old;
-            float dy = y_new - y_old;
-            float dz = z_new - z_old;
-
-            if ( dx < -1 ){
+            if ( x < -3 ){
                 callBackMovePlayer.movePlayer(Direction.RIGHT);
-            } else if ( dx > 1 ) {
+            } else if ( x > 3 ) {
                 callBackMovePlayer.movePlayer(Direction.LEFT);
             }
 
-            x_old = x_new;
-            y_old = y_new;
-            z_old = z_new;
+            if ( y < -3 ){
+                callBackMovePlayer.gameSpeed(KeysAndValues.SETTINGS_GAME_SPEED_FAST);
+            } else if ( y > 3 ) {
+                callBackMovePlayer.gameSpeed(KeysAndValues.SETTINGS_GAME_SPEED_SLOW);
+            }
         }
 
         @Override

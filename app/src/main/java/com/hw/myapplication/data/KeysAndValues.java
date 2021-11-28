@@ -25,13 +25,13 @@ public class KeysAndValues {
     public final static String SETTINGS_PLAYER_CONTROL_BUTTONS    = "SETTINGS_PLAYER_CONTROL_BUTTONS"   ;
     public final static String SETTINGS_PLAYER_CONTROL_ACC        = "SETTINGS_PLAYER_CONTROL_ACC"       ;
 
-    public final static int SETTINGS_GAME_SPEED_SLOW       = 1000    ;
-    public final static int SETTINGS_GAME_SPEED_FAST       = 700     ;
+    public final static long SETTINGS_GAME_SPEED_SLOW       = 1000L    ;
+    public final static long SETTINGS_GAME_SPEED_FAST       = 700L     ;
 
 
     /* DEFAULTS VALUES */
     public final static String    SETTINGS_PLAYER_CONTROL_DEFAULT    = SETTINGS_PLAYER_CONTROL_BUTTONS;
-    public final static int       SETTINGS_GAME_SPEED_DEFAULT        = SETTINGS_GAME_SPEED_SLOW       ;
+    public final static long      SETTINGS_GAME_SPEED_DEFAULT        = SETTINGS_GAME_SPEED_SLOW       ;
     public final static String    PLAYER_USERNAME_DEFAULT            = new Date().toString()          ;
     public final static long      PLAYER_SCORE_DEFAULT               = -1L                            ;
     public final static double    PLAYER_LOCATION_LAT_DEFAULT        = 0.0D                           ;

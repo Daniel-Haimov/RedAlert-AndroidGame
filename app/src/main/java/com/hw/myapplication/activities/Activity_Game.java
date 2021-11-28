@@ -41,6 +41,7 @@ public class Activity_Game extends AppCompatActivity {
     private         MyTicker    ticker                              ;
     private final   Handler     handler         = new Handler()     ;
     private         Runnable    timerRunnable                       ;
+    private         long        speed           = MyTicker.DEF_DELAY;
 
     private final int   NUM_OF_ROWS = 8 + 1     ; /* 1 for players row */
     private final int   NUM_OF_COLS = 5         ;
@@ -81,8 +82,7 @@ public class Activity_Game extends AppCompatActivity {
 
         findViews();
         settings();
-        initPlayer();
-        initSound();
+        initGame();
     }
 
     private void settings() {
@@ -93,35 +93,23 @@ public class Activity_Game extends AppCompatActivity {
             }
 
             @Override
-            public void gameSpeed(int speed) {
-                ticker.setDelay(speed);
+            public void gameSpeed(long speed) {
+                updateGameSpeed(speed);
             }
         };
-        int speed = KeysAndValues.SETTINGS_GAME_SPEED_DEFAULT;
+        speed = KeysAndValues.SETTINGS_GAME_SPEED_DEFAULT;
         String controller = bundle.getString(KeysAndValues.SETTINGS_PLAYER_CONTROL_KEY, KeysAndValues.SETTINGS_PLAYER_CONTROL_DEFAULT);
         if (controller.equals(KeysAndValues.SETTINGS_PLAYER_CONTROL_BUTTONS)){
             initButtonsFragment(cb);
-            speed = bundle.getInt(KeysAndValues.SETTINGS_GAME_SPEED_KEY);
+            speed = bundle.getLong(KeysAndValues.SETTINGS_GAME_SPEED_KEY);
         }else{
             initAccFragment(cb);
         }
-        initTicker(speed);
     }
 
-    private void initAccFragment(CallBack_MovePlayer cb) {
-        /* ACC Control Fragment */
-        Fragment_ACC fragmentACC = new Fragment_ACC();
-        fragmentACC.setActivity(this);
-        fragmentACC.setCallBackMovePlayer(cb);
-        getSupportFragmentManager().beginTransaction().add(R.id.panel_FRM_Controller, fragmentACC).commit();
-    }
+    private void updateGameSpeed(long speed) {
+        this.speed = speed;
 
-    private void initButtonsFragment(CallBack_MovePlayer cb) {
-        /* Buttons Fragment */
-        Fragment_Buttons fragmentButtons = new Fragment_Buttons();
-        fragmentButtons.setActivity(this);
-        fragmentButtons.setCallBackMovePlayer(cb);
-        getSupportFragmentManager().beginTransaction().add(R.id.panel_FRM_Controller, fragmentButtons).commit();
     }
 
     @Override
@@ -189,10 +177,32 @@ public class Activity_Game extends AppCompatActivity {
 
     // ~~~ INIT ~~~
 
+    private void initGame() {
+        initPlayer();
+        initTicker();
+        initSound();
+    }
+
     //init the player in begin in the middle
     private void initPlayer() {
         player_pos = NUM_OF_COLS / 2;
         fixPlayerRow();
+    }
+
+    private void initAccFragment(CallBack_MovePlayer cb) {
+        /* ACC Control Fragment */
+        Fragment_ACC fragmentACC = new Fragment_ACC();
+        fragmentACC.setActivity(this);
+        fragmentACC.setCallBackMovePlayer(cb);
+        getSupportFragmentManager().beginTransaction().add(R.id.panel_FRM_Controller, fragmentACC).commit();
+    }
+
+    private void initButtonsFragment(CallBack_MovePlayer cb) {
+        /* Buttons Fragment */
+        Fragment_Buttons fragmentButtons = new Fragment_Buttons();
+        fragmentButtons.setActivity(this);
+        fragmentButtons.setCallBackMovePlayer(cb);
+        getSupportFragmentManager().beginTransaction().add(R.id.panel_FRM_Controller, fragmentButtons).commit();
     }
 
     private void initSound() {
@@ -201,11 +211,11 @@ public class Activity_Game extends AppCompatActivity {
     }
 
     private void MovementController(int direction){
-        player_pos += direction;
-        if (player_pos < 0 || player_pos >= NUM_OF_COLS){
-            player_pos -= direction;
+        int newPos = player_pos + direction;
+        if (newPos < 0 || newPos >= NUM_OF_COLS){
             return;
         }
+        player_pos = newPos;
 
         ImageView playerOld = panel_IMG_players[player_pos - direction];
         playerOld.setImageResource(R.drawable.ic_player );
@@ -214,12 +224,20 @@ public class Activity_Game extends AppCompatActivity {
     }
 
 
-    private void initTicker(int speed) {
+    private void initTicker() {
         timerRunnable = () -> {
             updateClockView();
             handler.postDelayed(timerRunnable, speed);
         };
         ticker = new MyTicker(handler, timerRunnable);
+    }
+
+    private void updateTimerRunnableSpeed(){
+        timerRunnable = () -> {
+            updateClockView();
+            handler.postDelayed(timerRunnable, speed);
+        };
+        ticker.updateDelay(timerRunnable);
     }
 
 

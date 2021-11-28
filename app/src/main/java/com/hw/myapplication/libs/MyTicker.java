@@ -30,15 +30,11 @@ public class MyTicker {
         this.Delay = delay;
     }
 
-    public void updateDelay(int delay) {
-        //TODO change Speed
-        updateTicker();
+    public void updateDelay(Runnable timerRunnable) {
+        stopTicker();
+        this.timerRunnable = timerRunnable;
+        startTicker();
     }
-
-    private void updateTicker() {
-//        timerRunnable.
-    }
-
 
     public void startTicker() {
         handler.postDelayed(timerRunnable, Delay);

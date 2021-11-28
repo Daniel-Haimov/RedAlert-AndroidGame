@@ -75,8 +75,8 @@ public class Activity_Entry extends AppCompatActivity {
         bundle.putDouble(KeysAndValues.PLAYER_LOCATION_LON_KEY  , KeysAndValues.PLAYER_LOCATION_LON_DEFAULT);
 
         //Settings
-        bundle.putString(KeysAndValues.SETTINGS_PLAYER_CONTROL_KEY, sp.getString(KeysAndValues.SETTINGS_PLAYER_CONTROL_KEY, KeysAndValues.SETTINGS_PLAYER_CONTROL_DEFAULT));
-        bundle.putInt(KeysAndValues.SETTINGS_GAME_SPEED_KEY, sp.getInt(KeysAndValues.SETTINGS_GAME_SPEED_KEY, KeysAndValues.SETTINGS_GAME_SPEED_DEFAULT));
+        bundle.putString(KeysAndValues.SETTINGS_PLAYER_CONTROL_KEY  , sp.getString  (KeysAndValues.SETTINGS_PLAYER_CONTROL_KEY  , KeysAndValues.SETTINGS_PLAYER_CONTROL_DEFAULT ));
+        bundle.putLong  (KeysAndValues.SETTINGS_GAME_SPEED_KEY      , sp.getLong    (KeysAndValues.SETTINGS_GAME_SPEED_KEY      , KeysAndValues.SETTINGS_GAME_SPEED_DEFAULT     ));
 
     }
 

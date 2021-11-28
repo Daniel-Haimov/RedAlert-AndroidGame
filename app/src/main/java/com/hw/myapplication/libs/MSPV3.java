@@ -47,4 +47,12 @@ public class MSPV3 {
     public void putString(String KEY, String value) {
         sharedPreferences.edit().putString(KEY, value).apply();
     }
+
+    public long getLong(String KEY, long defValue) {
+        return sharedPreferences.getLong(KEY, defValue);
+    }
+
+    public void putLong(String KEY, long value) {
+        sharedPreferences.edit().putLong(KEY, value).apply();
+    }
 }

@@ -38,7 +38,7 @@ public class Activity_Settings extends AppCompatActivity {
         if (bundle.getString(KeysAndValues.SETTINGS_PLAYER_CONTROL_KEY, KeysAndValues.SETTINGS_PLAYER_CONTROL_DEFAULT).equals(KeysAndValues.SETTINGS_PLAYER_CONTROL_ACC)){
             settings_SWC_control.setChecked(true);
         }
-        if (bundle.getInt(KeysAndValues.SETTINGS_GAME_SPEED_KEY, KeysAndValues.SETTINGS_GAME_SPEED_DEFAULT) == (KeysAndValues.SETTINGS_GAME_SPEED_FAST)){
+        if (bundle.getLong(KeysAndValues.SETTINGS_GAME_SPEED_KEY, KeysAndValues.SETTINGS_GAME_SPEED_DEFAULT) == (KeysAndValues.SETTINGS_GAME_SPEED_FAST)){
             settings_SWC_speed.setChecked(true);
         }
     }
@@ -82,9 +82,9 @@ public class Activity_Settings extends AppCompatActivity {
         }
 
         if(!settings_SWC_speed.isChecked()){
-            sp.putInt(KeysAndValues.SETTINGS_GAME_SPEED_KEY, KeysAndValues.SETTINGS_GAME_SPEED_SLOW);
+            sp.putLong(KeysAndValues.SETTINGS_GAME_SPEED_KEY, KeysAndValues.SETTINGS_GAME_SPEED_SLOW);
         }else {
-            sp.putInt(KeysAndValues.SETTINGS_GAME_SPEED_KEY, KeysAndValues.SETTINGS_GAME_SPEED_FAST);
+            sp.putLong(KeysAndValues.SETTINGS_GAME_SPEED_KEY, KeysAndValues.SETTINGS_GAME_SPEED_FAST);
         }
 
         super.finish();
