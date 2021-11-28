@@ -31,9 +31,9 @@ public class Activity_Game extends AppCompatActivity {
     private Bundle bundle;
 
     private long        score       = 0      ;
-    private final long  FRAME_SCORE = +250   ;
-    private final long  COIN_SCORE  = +500   ;
-    private final long  STONE_SCORE = -1000  ;
+    private final long  FRAME_SCORE = +320   ;
+    private final long  COIN_SCORE  = +750   ;
+    private final long  STONE_SCORE = -1200  ;
 
     private final   MyVibrate   vibrator        = MyVibrate.getMe() ;
     private final   Random      rand            = new Random()      ;
