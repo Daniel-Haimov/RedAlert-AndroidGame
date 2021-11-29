@@ -1,7 +1,9 @@
 package com.hw.myapplication.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -23,6 +25,9 @@ public class Activity_Entry extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        grantLocationPermission();
+
         if (savedInstanceState != null){
             this.bundle = savedInstanceState;
         } else {
@@ -43,15 +48,9 @@ public class Activity_Entry extends AppCompatActivity {
     }
 
     private void initButtons() {
-        entry_BTN_Play.setOnClickListener(v -> {
-            startGame(Activity_Game.class);
-        });
-        entry_BTN_Settings.setOnClickListener(v -> {
-            startGame(Activity_Settings.class);
-        });
-        entry_BTN_Top10.setOnClickListener(v -> {
-            startGame(Activity_Top10.class);
-        });
+        entry_BTN_Play.setOnClickListener(v -> startGame(Activity_Game.class));
+        entry_BTN_Settings.setOnClickListener(v -> startGame(Activity_Settings.class));
+        entry_BTN_Top10.setOnClickListener(v -> startGame(Activity_Top10.class));
     }
 
     private void startGame(Class activity) {
@@ -78,6 +77,12 @@ public class Activity_Entry extends AppCompatActivity {
         bundle.putString(KeysAndValues.SETTINGS_PLAYER_CONTROL_KEY  , sp.getString  (KeysAndValues.SETTINGS_PLAYER_CONTROL_KEY  , KeysAndValues.SETTINGS_PLAYER_CONTROL_DEFAULT ));
         bundle.putLong  (KeysAndValues.SETTINGS_GAME_SPEED_KEY      , sp.getLong    (KeysAndValues.SETTINGS_GAME_SPEED_KEY      , KeysAndValues.SETTINGS_GAME_SPEED_DEFAULT     ));
 
+    }
+
+
+    private void grantLocationPermission() {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 44);
     }
 
 }

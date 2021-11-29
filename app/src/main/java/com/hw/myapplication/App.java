@@ -1,5 +1,6 @@
 package com.hw.myapplication;
 
+
 import android.app.Application;
 
 import com.hw.myapplication.libs.GPS;
@@ -11,6 +12,7 @@ public class App extends Application {
     @Override
     public void onCreate(){
         super.onCreate();
+
         MSPV3.initHelper(this);
         GPS.initHelper(this);
         MyVibrate.initHelper(this);
@@ -20,4 +22,5 @@ public class App extends Application {
             change sounds for stone and coin
          */
     }
+
 }
