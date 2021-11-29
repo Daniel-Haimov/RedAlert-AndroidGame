@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.google.gson.Gson;
 import com.hw.myapplication.R;
 import com.hw.myapplication.data.KeysAndValues;
 import com.hw.myapplication.libs.MSPV3;
@@ -48,9 +47,9 @@ public class Activity_Entry extends AppCompatActivity {
     }
 
     private void initButtons() {
-        entry_BTN_Play.setOnClickListener(v -> startGame(Activity_Game.class));
-        entry_BTN_Settings.setOnClickListener(v -> startGame(Activity_Settings.class));
-        entry_BTN_Top10.setOnClickListener(v -> startGame(Activity_Top10.class));
+        entry_BTN_Play      .setOnClickListener(v -> startGame(Activity_Game    .class      ));
+        entry_BTN_Settings  .setOnClickListener(v -> startGame(Activity_Settings.class      ));
+        entry_BTN_Top10     .setOnClickListener(v -> startGame(Activity_Top10   .class      ));
     }
 
     private void startGame(Class activity) {
@@ -81,7 +80,7 @@ public class Activity_Entry extends AppCompatActivity {
 
 
     private void grantLocationPermission() {
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}  , 44);
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 44);
     }
 

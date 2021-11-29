@@ -1,7 +1,5 @@
 package com.hw.myapplication.activities;
 
-
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
