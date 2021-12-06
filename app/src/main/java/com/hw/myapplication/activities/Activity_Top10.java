@@ -71,7 +71,7 @@ public class Activity_Top10 extends AppCompatActivity {
 
     private void updateCurrentRecord(double lat, double lon, long score) {
         String playerName   = bundle.getString(KeysAndValues.PLAYER_USERNAME_KEY    );
-        currentRecord = new Record().setPlayerName(playerName).setScore(score).setLat(lat).setLon(lon);
+        currentRecord = Record.builder().playerName(playerName).score(score).lat(lat).lon(lon).build();
         RecordDBController.updateRecord(recordDB, currentRecord);
         refreshList();
     }
