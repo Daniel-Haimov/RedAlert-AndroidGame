@@ -43,6 +43,7 @@ public class Activity_Top10 extends AppCompatActivity {
         /* Top10List Fragment */
         fragmentList = new Fragment_List();
         fragmentList.setCallBackList(callBackList);
+        fragmentList.setActivity(this);
         updateRecordDB();
 
 

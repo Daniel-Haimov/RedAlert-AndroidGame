@@ -200,14 +200,6 @@ public class Activity_Game extends AppCompatActivity {
         ticker = new MyTicker(handler, timerRunnable);
     }
 
-//    private void updateTimerRunnableSpeed(){
-//        timerRunnable = () -> {
-//            updateClockView();
-//            handler.postDelayed(timerRunnable, speed);
-//        };
-//        ticker.updateDelay(timerRunnable);
-//    }
-
     // ~~~ UPDATE VIEW LOGIC ~~~
 
     private void updateClockView() {
@@ -332,5 +324,4 @@ public class Activity_Game extends AppCompatActivity {
         startActivity(myIntent);
         finish();
     }
-
 }

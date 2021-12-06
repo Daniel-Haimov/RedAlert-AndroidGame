@@ -27,8 +27,6 @@ public class Activity_Entry extends AppCompatActivity {
 
         grantLocationPermission();
 
-//        if (savedInstanceState != null){
-//            this.bundle = savedInstanceState;
         if (getIntent().getBundleExtra(KeysAndValues.BUNDLE_KEY) != null){
             this.bundle = getIntent().getBundleExtra(KeysAndValues.BUNDLE_KEY);
         } else {

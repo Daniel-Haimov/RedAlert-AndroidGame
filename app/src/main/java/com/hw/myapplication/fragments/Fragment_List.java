@@ -1,6 +1,7 @@
 package com.hw.myapplication.fragments;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,9 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.hw.myapplication.R;
+import com.hw.myapplication.activities.Activity_Top10;
 import com.hw.myapplication.callbacks.CallBack_List;
+import com.hw.myapplication.data.GameData;
 import com.hw.myapplication.data.Record;
 import com.hw.myapplication.libs.NumberFormat;
 
@@ -19,11 +22,13 @@ import java.util.ArrayList;
 
 public class Fragment_List extends Fragment {
 
+    private final int NUM_OF_ROWS = 10;
     private CallBack_List callBackList;
     private ArrayList<Record> records;
-    private LinearLayout[]  list_ROW_rows       ;
-    private TextView[]      list_TXT_userNames  ;
-    private TextView[]      list_TXT_scores     ;
+    private LinearLayout[]      list_ROW_rows       = new LinearLayout[NUM_OF_ROWS] ;
+    private TextView    []      list_TXT_userNames  = new TextView    [NUM_OF_ROWS] ;
+    private TextView    []      list_TXT_scores     = new TextView    [NUM_OF_ROWS] ;
+    private Activity activity;
 
 
     public void setCallBackList(CallBack_List callBackList) {
@@ -57,7 +62,6 @@ public class Fragment_List extends Fragment {
 
 
     private void initViews() {
-        int NUM_OF_ROWS = 10;
         for (int index = 0; index < NUM_OF_ROWS; index++) {
             list_ROW_rows[index].setOnClickListener(setOnMap(index));
         }
@@ -68,42 +72,23 @@ public class Fragment_List extends Fragment {
     }
 
     private void findViews(View view) {
-        list_TXT_userNames = new TextView[]{
-                view.findViewById(R.id.list_TXT_userName0),
-                view.findViewById(R.id.list_TXT_userName1),
-                view.findViewById(R.id.list_TXT_userName2),
-                view.findViewById(R.id.list_TXT_userName3),
-                view.findViewById(R.id.list_TXT_userName4),
-                view.findViewById(R.id.list_TXT_userName5),
-                view.findViewById(R.id.list_TXT_userName6),
-                view.findViewById(R.id.list_TXT_userName7),
-                view.findViewById(R.id.list_TXT_userName8),
-                view.findViewById(R.id.list_TXT_userName9),
-        };
-        list_TXT_scores = new TextView[]{
-                view.findViewById(R.id.list_TXT_score0),
-                view.findViewById(R.id.list_TXT_score1),
-                view.findViewById(R.id.list_TXT_score2),
-                view.findViewById(R.id.list_TXT_score3),
-                view.findViewById(R.id.list_TXT_score4),
-                view.findViewById(R.id.list_TXT_score5),
-                view.findViewById(R.id.list_TXT_score6),
-                view.findViewById(R.id.list_TXT_score7),
-                view.findViewById(R.id.list_TXT_score8),
-                view.findViewById(R.id.list_TXT_score9),
-        };
-        list_ROW_rows = new LinearLayout[]{
-                view.findViewById(R.id.list_ROW_row0),
-                view.findViewById(R.id.list_ROW_row1),
-                view.findViewById(R.id.list_ROW_row2),
-                view.findViewById(R.id.list_ROW_row3),
-                view.findViewById(R.id.list_ROW_row4),
-                view.findViewById(R.id.list_ROW_row5),
-                view.findViewById(R.id.list_ROW_row6),
-                view.findViewById(R.id.list_ROW_row7),
-                view.findViewById(R.id.list_ROW_row8),
-                view.findViewById(R.id.list_ROW_row9),
-        };
+        for (int i = 0; i < NUM_OF_ROWS; i++) {
+            list_TXT_userNames[i] = view.findViewById(getResources().getIdentifier(
+                    "list_TXT_userName" + i,
+                    "id",
+                    activity.getPackageName()));
+            list_TXT_scores[i] = view.findViewById(getResources().getIdentifier(
+                    "list_TXT_score" + i,
+                    "id",
+                    activity.getPackageName()));
+            list_ROW_rows[i] = view.findViewById(getResources().getIdentifier(
+                    "list_ROW_row" + i,
+                    "id",
+                    activity.getPackageName()));
+        }
     }
 
+    public void setActivity(Activity activity) {
+        this.activity = activity;
+    }
 }
