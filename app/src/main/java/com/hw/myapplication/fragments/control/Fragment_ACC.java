@@ -1,4 +1,4 @@
-package com.hw.myapplication.fragments;
+package com.hw.myapplication.fragments.control;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -20,7 +20,7 @@ import com.hw.myapplication.data.Direction;
 import com.hw.myapplication.data.KeysAndValues;
 
 
-public class Fragment_ACC extends Fragment {
+public class Fragment_ACC extends Fragment implements GameController {
 
     private AppCompatActivity activity;
     private CallBack_MovePlayer callBackMovePlayer;
@@ -78,14 +78,17 @@ public class Fragment_ACC extends Fragment {
         sensorManager.unregisterListener(accSensorEventListener);
     }
 
+
     public boolean isSensorExist(int sensorType) {
         return (sensorManager.getDefaultSensor(sensorType) != null);
     }
 
+    @Override
     public void setActivity(AppCompatActivity activity) {
         this.activity = activity;
     }
 
+    @Override
     public void setCallBackMovePlayer(CallBack_MovePlayer callBackMovePlayer) {
         this.callBackMovePlayer = callBackMovePlayer;
     }

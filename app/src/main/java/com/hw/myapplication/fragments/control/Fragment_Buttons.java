@@ -1,4 +1,4 @@
-package com.hw.myapplication.fragments;
+package com.hw.myapplication.fragments.control;
 
 import android.os.Bundle;
 
@@ -16,7 +16,7 @@ import com.hw.myapplication.callbacks.CallBack_List;
 import com.hw.myapplication.callbacks.CallBack_MovePlayer;
 import com.hw.myapplication.data.Direction;
 
-public class Fragment_Buttons extends Fragment {
+public class Fragment_Buttons extends Fragment implements GameController {
 
 
     private AppCompatActivity activity;
@@ -49,10 +49,12 @@ public class Fragment_Buttons extends Fragment {
         });
     }
 
+    @Override
     public void setActivity(AppCompatActivity activity) {
         this.activity = activity;
     }
 
+    @Override
     public void setCallBackMovePlayer(CallBack_MovePlayer callBackMovePlayer) {
         this.callBackMovePlayer = callBackMovePlayer;
     }

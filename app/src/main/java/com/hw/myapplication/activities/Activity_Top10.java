@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.google.gson.Gson;
 import com.hw.myapplication.callbacks.CallBack_List;
 import com.hw.myapplication.data.KeysAndValues;
 import com.hw.myapplication.data.Record;
@@ -64,14 +63,12 @@ public class Activity_Top10 extends AppCompatActivity {
             return;
         }
 
-        GPS.getMe().getLocation((lat, lon) -> {
-            updateCurrentRecord(lat, lon, score);
-        });
+        GPS.getMe().getLocation((lat, lon) -> updateCurrentRecord(lat, lon, score));
     }
 
     private void updateCurrentRecord(double lat, double lon, long score) {
         String playerName   = bundle.getString(KeysAndValues.PLAYER_USERNAME_KEY    );
-        currentRecord = Record.builder().playerName(playerName).score(score).lat(lat).lon(lon).build();
+        currentRecord = new Record().setPlayerName(playerName).setScore(score).setLat(lat).setLon(lon);
         RecordDBController.updateRecord(recordDB, currentRecord);
         refreshList();
     }

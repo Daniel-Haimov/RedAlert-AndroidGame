@@ -1,6 +1,7 @@
 package com.hw.myapplication.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -15,8 +16,9 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.hw.myapplication.callbacks.CallBack_MovePlayer;
 import com.hw.myapplication.data.KeysAndValues;
-import com.hw.myapplication.fragments.Fragment_ACC;
-import com.hw.myapplication.fragments.Fragment_Buttons;
+import com.hw.myapplication.fragments.control.Fragment_ACC;
+import com.hw.myapplication.fragments.control.Fragment_Buttons;
+import com.hw.myapplication.fragments.control.GameController;
 import com.hw.myapplication.libs.MyTicker;
 import com.hw.myapplication.libs.MyVibrate;
 import com.hw.myapplication.libs.NumberFormat;
@@ -98,16 +100,15 @@ public class Activity_Game extends AppCompatActivity {
         speed = KeysAndValues.SETTINGS_GAME_SPEED_DEFAULT;
         String controller = bundle.getString(KeysAndValues.SETTINGS_PLAYER_CONTROL_KEY, KeysAndValues.SETTINGS_PLAYER_CONTROL_DEFAULT);
         if (controller.equals(KeysAndValues.SETTINGS_PLAYER_CONTROL_BUTTONS)){
-            initButtonsFragment(cb);
+            initControllerFragment(new Fragment_Buttons(), cb);
             speed = bundle.getLong(KeysAndValues.SETTINGS_GAME_SPEED_KEY);
         }else{
-            initAccFragment(cb);
+            initControllerFragment(new Fragment_ACC(), cb);
         }
     }
 
     private void updateGameSpeed(long speed) {
         this.speed = speed;
-
     }
 
     @Override
@@ -187,20 +188,10 @@ public class Activity_Game extends AppCompatActivity {
         fixPlayerRow();
     }
 
-    private void initAccFragment(CallBack_MovePlayer cb) {
-        /* ACC Control Fragment */
-        Fragment_ACC fragmentACC = new Fragment_ACC();
-        fragmentACC.setActivity(this);
-        fragmentACC.setCallBackMovePlayer(cb);
-        getSupportFragmentManager().beginTransaction().add(R.id.panel_FRM_Controller, fragmentACC).commit();
-    }
-
-    private void initButtonsFragment(CallBack_MovePlayer cb) {
-        /* Buttons Fragment */
-        Fragment_Buttons fragmentButtons = new Fragment_Buttons();
-        fragmentButtons.setActivity(this);
-        fragmentButtons.setCallBackMovePlayer(cb);
-        getSupportFragmentManager().beginTransaction().add(R.id.panel_FRM_Controller, fragmentButtons).commit();
+    private void initControllerFragment(GameController fragment, CallBack_MovePlayer cb) {
+        fragment.setActivity(this);
+        fragment.setCallBackMovePlayer(cb);
+        getSupportFragmentManager().beginTransaction().add(R.id.panel_FRM_Controller, (Fragment) fragment).commit();
     }
 
     private void initSound() {
@@ -237,7 +228,6 @@ public class Activity_Game extends AppCompatActivity {
         };
         ticker.updateDelay(timerRunnable);
     }
-
 
     // ~~~ UPDATE VIEW LOGIC ~~~
 

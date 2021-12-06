@@ -1,10 +1,9 @@
 package com.hw.myapplication.data;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
-@Builder @Getter @Setter
+@Accessors(chain = true) @Data
 public class Record {
     private String  playerName  ;
     private long    score       ;
