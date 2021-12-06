@@ -11,9 +11,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.hw.myapplication.R;
-import com.hw.myapplication.activities.Activity_Top10;
 import com.hw.myapplication.callbacks.CallBack_List;
-import com.hw.myapplication.data.GameData;
 import com.hw.myapplication.data.Record;
 import com.hw.myapplication.libs.NumberFormat;
 
@@ -25,9 +23,9 @@ public class Fragment_List extends Fragment {
     private final int NUM_OF_ROWS = 10;
     private CallBack_List callBackList;
     private ArrayList<Record> records;
-    private LinearLayout[]      list_ROW_rows       = new LinearLayout[NUM_OF_ROWS] ;
-    private TextView    []      list_TXT_userNames  = new TextView    [NUM_OF_ROWS] ;
-    private TextView    []      list_TXT_scores     = new TextView    [NUM_OF_ROWS] ;
+    private final LinearLayout[]      list_ROW_rows       = new LinearLayout[NUM_OF_ROWS] ;
+    private final TextView    []      list_TXT_userNames  = new TextView    [NUM_OF_ROWS] ;
+    private final TextView    []      list_TXT_scores     = new TextView    [NUM_OF_ROWS] ;
     private Activity activity;
 
 
