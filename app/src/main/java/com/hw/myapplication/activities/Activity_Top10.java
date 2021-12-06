@@ -22,7 +22,6 @@ public class Activity_Top10 extends AppCompatActivity {
     private Fragment_List fragmentList;
     private Fragment_Map fragmentMap;
     private RecordDB recordDB;
-    private Record currentRecord;
 
     CallBack_List callBackList = (index) -> {
         Record record       = recordDB.getRecords().get(index);
@@ -43,14 +42,12 @@ public class Activity_Top10 extends AppCompatActivity {
 
         /* Top10List Fragment */
         fragmentList = new Fragment_List();
-        fragmentList.setActivity(this);
         fragmentList.setCallBackList(callBackList);
         updateRecordDB();
 
 
         /* GoogleMap Fragment */
         fragmentMap = new Fragment_Map();
-        fragmentMap.setActivity(this);
         getSupportFragmentManager().beginTransaction().add(R.id.frame2, fragmentMap).commit();
     }
 
@@ -68,7 +65,7 @@ public class Activity_Top10 extends AppCompatActivity {
 
     private void updateCurrentRecord(double lat, double lon, long score) {
         String playerName   = bundle.getString(KeysAndValues.PLAYER_USERNAME_KEY    );
-        currentRecord = new Record().setPlayerName(playerName).setScore(score).setLat(lat).setLon(lon);
+        Record currentRecord = new Record().setPlayerName(playerName).setScore(score).setLat(lat).setLon(lon);
         RecordDBController.updateRecord(recordDB, currentRecord);
         refreshList();
     }

@@ -2,6 +2,7 @@ package com.hw.myapplication.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Switch;
@@ -15,8 +16,10 @@ public class Activity_Settings extends AppCompatActivity {
 
     private Bundle bundle;
     // BUTTONS <-> ACC
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     private Switch settings_SWC_control ;
     // SLOW <-> FAST
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     private Switch settings_SWC_speed   ;
     private TextView settings_TXT_slow  ;
     private TextView settings_TXT_fast  ;
@@ -44,12 +47,7 @@ public class Activity_Settings extends AppCompatActivity {
     }
 
     private void initListeners() {
-        settings_SWC_control.setOnClickListener(view ->{
-            updateSettings();
-        });
-//        settings_SWC_speed  .setOnClickListener(view ->{
-//            updateSettings();
-//        });
+        settings_SWC_control.setOnClickListener(view -> updateSettings());
     }
 
     private void updateSettings() {

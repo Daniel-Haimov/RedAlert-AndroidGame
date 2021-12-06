@@ -5,8 +5,6 @@ import android.content.SharedPreferences;
 
 public class MSPV3 {
 
-    private final String SP_FILE = "My_SP_FILE";
-
     private static MSPV3 me;
     private SharedPreferences sharedPreferences;
 
@@ -15,6 +13,7 @@ public class MSPV3 {
     }
 
     private MSPV3(Context context) {
+        String SP_FILE = "My_SP_FILE";
         sharedPreferences = context.getApplicationContext().getSharedPreferences(SP_FILE, Context.MODE_PRIVATE);
     }
 

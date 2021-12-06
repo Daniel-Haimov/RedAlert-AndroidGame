@@ -54,7 +54,7 @@ public class Activity_Entry extends AppCompatActivity {
         entry_BTN_Top10     .setOnClickListener(v -> startGame(Activity_Top10   .class      ));
     }
 
-    private void startGame(Class activity) {
+    private void startGame(Class<?> activity) {
         Intent myIntent = new Intent(this, activity);
         initBundle();
         myIntent.putExtra(KeysAndValues.BUNDLE_KEY, bundle);

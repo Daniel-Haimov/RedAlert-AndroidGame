@@ -11,15 +11,12 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.hw.myapplication.R;
-import com.hw.myapplication.activities.Activity_Game;
-import com.hw.myapplication.callbacks.CallBack_List;
 import com.hw.myapplication.callbacks.CallBack_MovePlayer;
 import com.hw.myapplication.data.Direction;
 
 public class Fragment_Buttons extends Fragment implements GameController {
 
 
-    private AppCompatActivity activity;
     private CallBack_MovePlayer callBackMovePlayer;
 
     private ImageButton panel_BTN_left ;
@@ -40,18 +37,13 @@ public class Fragment_Buttons extends Fragment implements GameController {
     }
 
     private void initButtons() {
-        panel_BTN_left.setOnClickListener(v -> {
-            callBackMovePlayer.movePlayer(Direction.LEFT);
-        });
+        panel_BTN_left.setOnClickListener(v -> callBackMovePlayer.movePlayer(Direction.LEFT));
 
-        panel_BTN_right.setOnClickListener(v -> {
-            callBackMovePlayer.movePlayer(Direction.RIGHT);
-        });
+        panel_BTN_right.setOnClickListener(v -> callBackMovePlayer.movePlayer(Direction.RIGHT));
     }
 
     @Override
     public void setActivity(AppCompatActivity activity) {
-        this.activity = activity;
     }
 
     @Override

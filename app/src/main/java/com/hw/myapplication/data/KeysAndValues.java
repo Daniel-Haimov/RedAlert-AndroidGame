@@ -36,7 +36,7 @@ public class KeysAndValues {
     public final static long      PLAYER_SCORE_DEFAULT               = -1L                            ;
     public final static double    PLAYER_LOCATION_LAT_DEFAULT        = 0.0D                           ;
     public final static double    PLAYER_LOCATION_LON_DEFAULT        = 0.0D                           ;
-    public final static RecordDB  TOP10_DB_DEFAULT                   = new RecordDB()                 ;
+//    public final static RecordDB  TOP10_DB_DEFAULT                   = new RecordDB()                 ;
     public final static int       TOP10_MAX_LIST_SIZE                = 10                             ;
 
 

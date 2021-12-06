@@ -79,10 +79,6 @@ public class Fragment_ACC extends Fragment implements GameController {
     }
 
 
-    public boolean isSensorExist(int sensorType) {
-        return (sensorManager.getDefaultSensor(sensorType) != null);
-    }
-
     @Override
     public void setActivity(AppCompatActivity activity) {
         this.activity = activity;

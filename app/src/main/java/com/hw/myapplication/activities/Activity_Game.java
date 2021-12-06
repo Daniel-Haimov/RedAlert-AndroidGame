@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.hw.myapplication.callbacks.CallBack_MovePlayer;
+import com.hw.myapplication.data.GameData;
 import com.hw.myapplication.data.KeysAndValues;
 import com.hw.myapplication.fragments.control.Fragment_ACC;
 import com.hw.myapplication.fragments.control.Fragment_Buttons;
@@ -30,12 +31,6 @@ public class Activity_Game extends AppCompatActivity {
 
     private Bundle bundle;
 
-    private long        score       = 0      ;
-    private final long  FRAME_SCORE = +320   ;
-    private final long  COIN_SCORE  = +750   ;
-    private final long  STONE_SCORE = -1200  ;
-
-    private final   MyVibrate   vibrator        = MyVibrate.getMe() ;
     private final   Random      rand            = new Random()      ;
 
     private         MyTicker    ticker                              ;
@@ -43,30 +38,14 @@ public class Activity_Game extends AppCompatActivity {
     private         Runnable    timerRunnable                       ;
     private         long        speed           = MyTicker.DEF_DELAY;
 
-    private final int   NUM_OF_ROWS = 8 + 1     ; /* 1 for players row */
-    private final int   NUM_OF_COLS = 5         ;
-    private final int   MAX_LIVES = 3           ;
-    private int         lives = MAX_LIVES       ;
+    private long        score       = 0      ;
+    private int         lives = GameData.MAX_LIVES       ;
     private int         player_pos              ;
     private boolean     row_with_stone = true   ;
 
-    private final int STONE_WEIGHT  = 5 ;
-    private final int COIN_WEIGHT   = 2 ;
-
-    private final String STONE_TAG              = "STONE_TAG"   ;
-    private final String HIT_BY_STONE_TOAST_MSG = "HIT"         ;
-    private final String COIN_TAG               = "COIN_TAG"    ;
-    private final String HIT_BY_COIN_TOAST_MSG  = "COIN"        ;
-
-    private final int             PLAYER_DRAW_ROTATION      = 0     ;
-    private final int             STONE_DRAW_ROTATION       = 135   ;
-    private final int             HIT_STONE_DRAW_ROTATION   = 135   ;
-    private final int             COIN_DRAW_ROTATION        = 0     ;
-    private final int             HIT_COIN_DRAW_ROTATION    = 0     ;
-
-    private final ImageView[]     panel_IMG_hearts    = new ImageView[MAX_LIVES]                  ;
-    private final ImageView[][]   panel_IMG_stones    = new ImageView[NUM_OF_ROWS][NUM_OF_COLS]   ;
-    private final ImageView[]     panel_IMG_players   = new ImageView[NUM_OF_COLS]                ;
+    private final ImageView[]     panel_IMG_hearts    = new ImageView[GameData.MAX_LIVES]                  ;
+    private final ImageView[][]   panel_IMG_stones    = new ImageView[GameData.NUM_OF_ROWS][GameData.NUM_OF_COLS]   ;
+    private final ImageView[]     panel_IMG_players   = new ImageView[GameData.NUM_OF_COLS]                ;
     private TextView              panel_TXT_score                                                 ;
 
     private MediaPlayer stoneHitSound   ;
@@ -139,7 +118,7 @@ public class Activity_Game extends AppCompatActivity {
     }
 
     private void findHeartsView(){
-        for (int i = 0; i < MAX_LIVES; i++) {
+        for (int i = 0; i < GameData.MAX_LIVES; i++) {
             panel_IMG_hearts[i] =
                     findViewById(getResources().getIdentifier(
                             "panel_IMG_heart_" + i,
@@ -149,7 +128,7 @@ public class Activity_Game extends AppCompatActivity {
     }
 
     private void findPlayersView() {
-        for (int i = 0; i < NUM_OF_COLS; i++) {
+        for (int i = 0; i < GameData.NUM_OF_COLS; i++) {
             panel_IMG_players[i] =
                     findViewById(getResources().getIdentifier(
                             "panel_IMG_player_" + i,
@@ -159,8 +138,8 @@ public class Activity_Game extends AppCompatActivity {
     }
 
     private void findGameObjectsView() {
-        for (int i = 0; i < NUM_OF_ROWS - 1; i++) {
-            for (int j = 0; j < NUM_OF_COLS; j++) {
+        for (int i = 0; i < GameData.NUM_OF_ROWS - 1; i++) {
+            for (int j = 0; j < GameData.NUM_OF_COLS; j++) {
                 panel_IMG_stones[i][j] =
                         findViewById(getResources().getIdentifier(
                                 "panel_IMG_stone" + i + "_" + j,
@@ -170,7 +149,7 @@ public class Activity_Game extends AppCompatActivity {
             }
         }
         //
-        panel_IMG_stones[NUM_OF_ROWS - 1] = panel_IMG_players;
+        panel_IMG_stones[GameData.NUM_OF_ROWS - 1] = panel_IMG_players;
     }
 
 
@@ -184,7 +163,7 @@ public class Activity_Game extends AppCompatActivity {
 
     //init the player in begin in the middle
     private void initPlayer() {
-        player_pos = NUM_OF_COLS / 2;
+        player_pos = GameData.NUM_OF_COLS / 2;
         fixPlayerRow();
     }
 
@@ -201,7 +180,7 @@ public class Activity_Game extends AppCompatActivity {
 
     private void MovementController(int direction){
         int newPos = player_pos + direction;
-        if (newPos < 0 || newPos >= NUM_OF_COLS){
+        if (newPos < 0 || newPos >= GameData.NUM_OF_COLS){
             return;
         }
         player_pos = newPos;
@@ -221,26 +200,26 @@ public class Activity_Game extends AppCompatActivity {
         ticker = new MyTicker(handler, timerRunnable);
     }
 
-    private void updateTimerRunnableSpeed(){
-        timerRunnable = () -> {
-            updateClockView();
-            handler.postDelayed(timerRunnable, speed);
-        };
-        ticker.updateDelay(timerRunnable);
-    }
+//    private void updateTimerRunnableSpeed(){
+//        timerRunnable = () -> {
+//            updateClockView();
+//            handler.postDelayed(timerRunnable, speed);
+//        };
+//        ticker.updateDelay(timerRunnable);
+//    }
 
     // ~~~ UPDATE VIEW LOGIC ~~~
 
     private void updateClockView() {
-        updateScoreBy(FRAME_SCORE);
+        updateScoreBy(GameData.FRAME_SCORE);
         updateView();
         updateFirstRow();
         checkHits();
     }
 
     private void updateView() {
-        for (int i = NUM_OF_ROWS - 1; i > 0; i--)
-            for (int j = 0; j < NUM_OF_COLS; j++) {
+        for (int i = GameData.NUM_OF_ROWS - 1; i > 0; i--)
+            for (int j = 0; j < GameData.NUM_OF_COLS; j++) {
                 ImageView objOld = panel_IMG_stones[i - 1][j];
                 ImageView objNew = panel_IMG_stones[i][j];
 
@@ -253,9 +232,9 @@ public class Activity_Game extends AppCompatActivity {
 
     private void checkHits() {
         // If there is object in player position
-        ImageView obj = panel_IMG_stones[NUM_OF_ROWS -1][player_pos];
+        ImageView obj = panel_IMG_stones[GameData.NUM_OF_ROWS -1][player_pos];
         if (obj.getVisibility() == View.VISIBLE) {
-            if (obj.getTag().equals(STONE_TAG)) {
+            if (obj.getTag().equals(GameData.STONE_TAG)) {
                 hitByStone();
             } else {
                 hitByCoin();
@@ -266,10 +245,10 @@ public class Activity_Game extends AppCompatActivity {
     }
 
     private void hitByStone() {
-        hitView(STONE_TAG);
-        showToast(HIT_BY_STONE_TOAST_MSG);
-        updateScoreBy(STONE_SCORE);
-        vibrator.Vibrate();
+        hitView(GameData.STONE_TAG);
+        showToast(GameData.HIT_BY_STONE_TOAST_MSG);
+        updateScoreBy(GameData.STONE_SCORE);
+        MyVibrate.getMe().Vibrate();
         lowerLife();
         stoneHitSound.start();
     }
@@ -284,9 +263,9 @@ public class Activity_Game extends AppCompatActivity {
     }
 
     private void hitByCoin(){
-        hitView(COIN_TAG);
-        showToast(HIT_BY_COIN_TOAST_MSG);
-        updateScoreBy(COIN_SCORE);
+        hitView(GameData.COIN_TAG);
+        showToast(GameData.HIT_BY_COIN_TOAST_MSG);
+        updateScoreBy(GameData.COIN_SCORE);
         coinHitSound.start();
     }
 
@@ -296,18 +275,18 @@ public class Activity_Game extends AppCompatActivity {
 
     private void hitView(String tag) {
         ImageView player = panel_IMG_players[player_pos];
-        if(tag.equals(STONE_TAG)){
-            player.setRotation       (HIT_STONE_DRAW_ROTATION);
+        if(tag.equals(GameData.STONE_TAG)){
+            player.setRotation       (GameData.HIT_STONE_DRAW_ROTATION);
             player.setImageResource  (R.drawable.ic_stone_hit);
         }else{
-            player.setRotation       (HIT_COIN_DRAW_ROTATION);
+            player.setRotation       (GameData.HIT_COIN_DRAW_ROTATION);
             player.setImageResource  (R.drawable.ic_coin_hit);
         }
     }
 
     private void fixPlayerRow() {
         ImageView player = panel_IMG_players[player_pos];
-        player.setRotation       (PLAYER_DRAW_ROTATION);
+        player.setRotation       (GameData.PLAYER_DRAW_ROTATION);
         player.setImageResource  (R.drawable.ic_player);
         player.setVisibility     (View.VISIBLE        );
     }
@@ -321,22 +300,22 @@ public class Activity_Game extends AppCompatActivity {
     }
 
     private void randomizeFirstRow() {
-        int col = rand.nextInt(NUM_OF_COLS);
-        int obj = rand.nextInt(STONE_WEIGHT + COIN_WEIGHT);
-        if (obj < STONE_WEIGHT) { // generate stone
+        int col = rand.nextInt(GameData.NUM_OF_COLS);
+        int obj = rand.nextInt(GameData.STONE_WEIGHT + GameData.COIN_WEIGHT);
+        if (obj < GameData.STONE_WEIGHT) { // generate stone
             panel_IMG_stones[0][col].setImageResource   (R.drawable.ic_stone    )   ;
-            panel_IMG_stones[0][col].setRotation        (STONE_DRAW_ROTATION    )   ;
-            panel_IMG_stones[0][col].setTag             (STONE_TAG              )   ;
+            panel_IMG_stones[0][col].setRotation        (GameData.STONE_DRAW_ROTATION    )   ;
+            panel_IMG_stones[0][col].setTag             (GameData.STONE_TAG              )   ;
         }else { // generate coin
             panel_IMG_stones[0][col].setImageResource   (R.drawable.ic_coin     )   ;
-            panel_IMG_stones[0][col].setRotation        (COIN_DRAW_ROTATION     )   ;
-            panel_IMG_stones[0][col].setTag             (COIN_TAG               )   ;
+            panel_IMG_stones[0][col].setRotation        (GameData.COIN_DRAW_ROTATION     )   ;
+            panel_IMG_stones[0][col].setTag             (GameData.COIN_TAG               )   ;
         }
         panel_IMG_stones[0][col].setVisibility(View.VISIBLE);
     }
 
     private void InvisibleFirstRow() {
-        for (int i = 0; i < NUM_OF_COLS; i++)
+        for (int i = 0; i < GameData.NUM_OF_COLS; i++)
             panel_IMG_stones[0][i].setVisibility(View.INVISIBLE);
     }
 

@@ -7,34 +7,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.hw.myapplication.R;
 import com.hw.myapplication.callbacks.CallBack_List;
 import com.hw.myapplication.data.Record;
-import com.hw.myapplication.data.RecordDB;
 import com.hw.myapplication.libs.NumberFormat;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 
 public class Fragment_List extends Fragment {
 
-    private AppCompatActivity activity;
     private CallBack_List callBackList;
     private ArrayList<Record> records;
-    private final int NUM_OF_ROWS = 10;
     private LinearLayout[]  list_ROW_rows       ;
     private TextView[]      list_TXT_userNames  ;
     private TextView[]      list_TXT_scores     ;
 
-    private Random random = new Random();
-
-    public void setActivity(AppCompatActivity activity) {
-        this.activity = activity;
-    }
 
     public void setCallBackList(CallBack_List callBackList) {
         this.callBackList = callBackList;
@@ -67,15 +57,14 @@ public class Fragment_List extends Fragment {
 
 
     private void initViews() {
+        int NUM_OF_ROWS = 10;
         for (int index = 0; index < NUM_OF_ROWS; index++) {
             list_ROW_rows[index].setOnClickListener(setOnMap(index));
         }
     }
 
     private View.OnClickListener setOnMap(int index) {
-        return view -> {
-            callBackList.rowSelected(index);
-        };
+        return view -> callBackList.rowSelected(index);
     }
 
     private void findViews(View view) {
