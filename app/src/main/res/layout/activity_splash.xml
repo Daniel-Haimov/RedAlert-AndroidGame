@@ -7,18 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".activities.Activity_Splash">
 
+    <!-- BACKGROUND -->
     <ImageView
+        android:id="@+id/splash_IMG_backGround"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:background="#000000"
         android:layout_centerInParent="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher_background"/>
+        android:cropToPadding="true" />
 
     <ImageView
         android:id="@+id/splash_IMG_logo"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:rotation="135"
         android:layout_centerInParent="true"
-        android:src="@drawable/img_horse"/>
+        android:src="@drawable/ic_stone"/>
 
 </RelativeLayout>

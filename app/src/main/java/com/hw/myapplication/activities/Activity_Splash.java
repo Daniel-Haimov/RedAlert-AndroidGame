@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 
+import com.bumptech.glide.Glide;
 import com.hw.myapplication.R;
 
 
@@ -35,6 +36,12 @@ public class Activity_Splash extends AppCompatActivity {
         splash_IMG_logo.setVisibility(View.INVISIBLE);
 
         showViewSlideDown(splash_IMG_logo);
+        setBackGround();
+    }
+
+    private void setBackGround() {
+        ImageView splash_IMG_backGround = findViewById(R.id.splash_IMG_backGround);
+        Glide.with(Activity_Splash.this).load(R.drawable.bg_splash).centerCrop().into(splash_IMG_backGround);
     }
 
     public void showViewSlideDown(final View v) {
