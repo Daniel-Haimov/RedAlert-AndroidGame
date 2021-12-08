@@ -60,17 +60,10 @@ public class Activity_Settings extends AppCompatActivity {
             settings_TXT_slow   .setVisibility  (View.VISIBLE)  ;
             settings_TXT_fast   .setVisibility  (View.VISIBLE)  ;
         }
+        saveSettings();
     }
 
-    private void findViews() {
-        settings_SWC_control = findViewById(R.id.settings_SWC_control);
-        settings_SWC_speed   = findViewById(R.id.settings_SWC_speed  );
-        settings_TXT_slow    = findViewById(R.id.settings_TXT_slow   );
-        settings_TXT_fast    = findViewById(R.id.settings_TXT_fast   );
-    }
-
-    @Override
-    public void finish() {
+    private void saveSettings() {
         MSPV3 sp = MSPV3.getMe();
 
         if(!settings_SWC_control.isChecked()){
@@ -84,7 +77,13 @@ public class Activity_Settings extends AppCompatActivity {
         }else {
             sp.putLong(KeysAndValues.SETTINGS_GAME_SPEED_KEY, KeysAndValues.SETTINGS_GAME_SPEED_FAST);
         }
-
-        super.finish();
     }
+
+    private void findViews() {
+        settings_SWC_control = findViewById(R.id.settings_SWC_control);
+        settings_SWC_speed   = findViewById(R.id.settings_SWC_speed  );
+        settings_TXT_slow    = findViewById(R.id.settings_TXT_slow   );
+        settings_TXT_fast    = findViewById(R.id.settings_TXT_fast   );
+    }
+
 }
