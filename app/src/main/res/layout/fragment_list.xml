@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="3dp"
@@ -20,6 +21,12 @@
             android:text="User Name"
             android:gravity="center"
             android:textSize="30sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.03"
+            android:background="@color/black" />
 
         <TextView
             android:layout_width="0dp"
@@ -47,7 +54,8 @@
                 android:layout_height="wrap_content"
                 android:background="#fe5a3b"
                 android:orientation="horizontal"
-                android:visibility="gone">
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <TextView
                     android:id="@+id/list_TXT_userName0"
@@ -58,6 +66,12 @@
                     android:layout_weight="2"
                     android:gravity="center_vertical"
                     android:textSize="30sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.03"
+                    android:background="@color/black" />
 
                 <TextView
                     android:id="@+id/list_TXT_score0"
@@ -75,7 +89,8 @@
                 android:layout_height="wrap_content"
                 android:background="#fe7259"
                 android:orientation="horizontal"
-                android:visibility="gone">
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <TextView
                     android:id="@+id/list_TXT_userName1"
@@ -86,6 +101,12 @@
                     android:layout_weight="2"
                     android:gravity="center_vertical"
                     android:textSize="30sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.03"
+                    android:background="@color/black" />
 
                 <TextView
                     android:id="@+id/list_TXT_score1"
@@ -103,7 +124,8 @@
                 android:layout_height="wrap_content"
                 android:background="#fe5a3b"
                 android:orientation="horizontal"
-                android:visibility="gone">
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <TextView
                     android:id="@+id/list_TXT_userName2"
@@ -114,6 +136,12 @@
                     android:layout_weight="2"
                     android:gravity="center_vertical"
                     android:textSize="30sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.03"
+                    android:background="@color/black" />
 
                 <TextView
                     android:id="@+id/list_TXT_score2"
@@ -131,7 +159,8 @@
                 android:layout_height="wrap_content"
                 android:background="#fe7259"
                 android:orientation="horizontal"
-                android:visibility="gone">
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <TextView
                     android:id="@+id/list_TXT_userName3"
@@ -142,6 +171,12 @@
                     android:layout_weight="2"
                     android:gravity="center_vertical"
                     android:textSize="30sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.03"
+                    android:background="@color/black" />
 
                 <TextView
                     android:id="@+id/list_TXT_score3"
@@ -159,7 +194,8 @@
                 android:layout_height="wrap_content"
                 android:background="#fe5a3b"
                 android:orientation="horizontal"
-                android:visibility="gone">
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <TextView
                     android:id="@+id/list_TXT_userName4"
@@ -170,6 +206,12 @@
                     android:layout_weight="2"
                     android:gravity="center_vertical"
                     android:textSize="30sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.03"
+                    android:background="@color/black" />
 
                 <TextView
                     android:id="@+id/list_TXT_score4"
@@ -187,7 +229,8 @@
                 android:layout_height="wrap_content"
                 android:background="#fe7259"
                 android:orientation="horizontal"
-                android:visibility="gone">
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <TextView
                     android:id="@+id/list_TXT_userName5"
@@ -198,6 +241,12 @@
                     android:layout_weight="2"
                     android:gravity="center_vertical"
                     android:textSize="30sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.03"
+                    android:background="@color/black" />
 
                 <TextView
                     android:id="@+id/list_TXT_score5"
@@ -215,7 +264,8 @@
                 android:layout_height="wrap_content"
                 android:background="#fe5a3b"
                 android:orientation="horizontal"
-                android:visibility="gone">
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <TextView
                     android:id="@+id/list_TXT_userName6"
@@ -226,6 +276,12 @@
                     android:layout_weight="2"
                     android:gravity="center_vertical"
                     android:textSize="30sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.03"
+                    android:background="@color/black" />
 
                 <TextView
                     android:id="@+id/list_TXT_score6"
@@ -243,7 +299,8 @@
                 android:layout_height="wrap_content"
                 android:background="#fe7259"
                 android:orientation="horizontal"
-                android:visibility="gone">
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <TextView
                     android:id="@+id/list_TXT_userName7"
@@ -254,6 +311,12 @@
                     android:layout_weight="2"
                     android:gravity="center_vertical"
                     android:textSize="30sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.03"
+                    android:background="@color/black" />
 
                 <TextView
                     android:id="@+id/list_TXT_score7"
@@ -271,7 +334,8 @@
                 android:layout_height="wrap_content"
                 android:background="#fe5a3b"
                 android:orientation="horizontal"
-                android:visibility="gone">
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <TextView
                     android:id="@+id/list_TXT_userName8"
@@ -282,6 +346,12 @@
                     android:layout_weight="2"
                     android:gravity="center_vertical"
                     android:textSize="30sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.03"
+                    android:background="@color/black" />
 
                 <TextView
                     android:id="@+id/list_TXT_score8"
@@ -299,7 +369,8 @@
                 android:layout_height="wrap_content"
                 android:background="#fe7259"
                 android:orientation="horizontal"
-                android:visibility="gone">
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <TextView
                     android:id="@+id/list_TXT_userName9"
@@ -310,6 +381,12 @@
                     android:layout_weight="2"
                     android:gravity="center_vertical"
                     android:textSize="30sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.03"
+                    android:background="@color/black" />
 
                 <TextView
                     android:id="@+id/list_TXT_score9"
