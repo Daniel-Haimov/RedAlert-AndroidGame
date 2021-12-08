@@ -8,6 +8,16 @@
     tools:context=".activities.Activity_Top10"
     android:keepScreenOn="true">
 
+    <!-- BACKGROUND -->
+    <ImageView
+        android:id="@+id/top10_IMG_backGround"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:background="#5F000000"
+        android:layout_centerInParent="true"
+        android:cropToPadding="true" />
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TOP 10"
-            android:textColor="@color/black"
+            android:textColor="#FF0000"
             android:textSize="30sp"
             android:textStyle="bold" />
 

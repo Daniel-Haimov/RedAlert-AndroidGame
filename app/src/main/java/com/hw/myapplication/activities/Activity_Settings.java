@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.hw.myapplication.R;
 import com.hw.myapplication.data.KeysAndValues;
 import com.hw.myapplication.libs.MSPV3;
@@ -17,12 +19,12 @@ public class Activity_Settings extends AppCompatActivity {
     private Bundle bundle;
     // BUTTONS <-> ACC
     @SuppressLint("UseSwitchCompatOrMaterialCode")
-    private Switch settings_SWC_control ;
+    private Switch      settings_SWC_control        ;
     // SLOW <-> FAST
     @SuppressLint("UseSwitchCompatOrMaterialCode")
-    private Switch settings_SWC_speed   ;
-    private TextView settings_TXT_slow  ;
-    private TextView settings_TXT_fast  ;
+    private Switch      settings_SWC_speed          ;
+    private TextView    settings_TXT_slow           ;
+    private TextView    settings_TXT_fast           ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,12 @@ public class Activity_Settings extends AppCompatActivity {
         initViews();
         initListeners();
         updateSettings();
+        setBackGround();
+    }
+
+    private void setBackGround() {
+        ImageView settings_IMG_backGround = findViewById(R.id.settings_IMG_backGround);
+        Glide.with(Activity_Settings.this).load(R.drawable.bg_settings).centerCrop().into(settings_IMG_backGround);
     }
 
     private void initViews() {
@@ -80,10 +88,10 @@ public class Activity_Settings extends AppCompatActivity {
     }
 
     private void findViews() {
-        settings_SWC_control = findViewById(R.id.settings_SWC_control);
-        settings_SWC_speed   = findViewById(R.id.settings_SWC_speed  );
-        settings_TXT_slow    = findViewById(R.id.settings_TXT_slow   );
-        settings_TXT_fast    = findViewById(R.id.settings_TXT_fast   );
+        settings_SWC_control    = findViewById(R.id.settings_SWC_control);
+        settings_SWC_speed      = findViewById(R.id.settings_SWC_speed  );
+        settings_TXT_slow       = findViewById(R.id.settings_TXT_slow   );
+        settings_TXT_fast       = findViewById(R.id.settings_TXT_fast   );
     }
 
 }

@@ -8,7 +8,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.hw.myapplication.R;
 import com.hw.myapplication.data.KeysAndValues;
 import com.hw.myapplication.libs.MSPV3;
@@ -26,7 +28,6 @@ public class Activity_Entry extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         grantLocationPermission();
-
         if (getIntent().getBundleExtra(KeysAndValues.BUNDLE_KEY) != null){
             this.bundle = getIntent().getBundleExtra(KeysAndValues.BUNDLE_KEY);
         } else {
@@ -35,7 +36,14 @@ public class Activity_Entry extends AppCompatActivity {
 
         setContentView(R.layout.activity_entry);
         findViews();
+        setBackGround();
         initButtons();
+    }
+
+
+    private void setBackGround() {
+        ImageView entry_IMG_backGround = findViewById(R.id.entry_IMG_backGround);
+        Glide.with(Activity_Entry.this).load(R.drawable.bg_entry).centerCrop().into(entry_IMG_backGround);
     }
 
     private void findViews() {

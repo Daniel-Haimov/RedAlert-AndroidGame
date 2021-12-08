@@ -6,12 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".activities.Activity_Entry">
 
+    <!-- BACKGROUND -->
     <ImageView
         android:id="@+id/entry_IMG_backGround"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitCenter"
-        android:background="#5F000000"
+        android:background="#000000"
         android:layout_centerInParent="true"
         android:cropToPadding="true" />
 
@@ -71,6 +72,8 @@
         android:hint="Enter Your Name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textColor="@color/black"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/entry_TXT_GameName"
         app:layout_constraintStart_toStartOf="@+id/entry_TXT_GameName"
         app:layout_constraintTop_toBottomOf="@+id/entry_TXT_GameName" />

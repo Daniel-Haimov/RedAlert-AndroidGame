@@ -3,7 +3,9 @@ package com.hw.myapplication.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.hw.myapplication.callbacks.CallBack_List;
 import com.hw.myapplication.data.KeysAndValues;
 import com.hw.myapplication.data.Record;
@@ -50,6 +52,12 @@ public class Activity_Top10 extends AppCompatActivity {
         /* GoogleMap Fragment */
         fragmentMap = new Fragment_Map();
         getSupportFragmentManager().beginTransaction().add(R.id.frame2, fragmentMap).commit();
+        setBackGround();
+    }
+
+    private void setBackGround() {
+        ImageView top10_IMG_backGround = findViewById(R.id.top10_IMG_backGround);
+        Glide.with(Activity_Top10.this).load(R.drawable.bg_top10).centerCrop().into(top10_IMG_backGround);
     }
 
     private void updateRecordDB() {

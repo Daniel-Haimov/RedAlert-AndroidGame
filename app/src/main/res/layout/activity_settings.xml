@@ -7,6 +7,16 @@
     android:background="#676565"
     tools:context=".activities.Activity_Settings">
 
+    <!-- BACKGROUND -->
+    <ImageView
+        android:id="@+id/settings_IMG_backGround"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:background="#5F000000"
+        android:layout_centerInParent="true"
+        android:cropToPadding="true" />
+
     <Switch
         android:id="@+id/settings_SWC_control"
         android:layout_width="wrap_content"
@@ -26,6 +36,7 @@
         android:text="BUTTONS"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/settings_SWC_control"
         app:layout_constraintEnd_toStartOf="@+id/settings_SWC_control"
         app:layout_constraintTop_toTopOf="@+id/settings_SWC_control" />
@@ -38,6 +49,7 @@
         android:text="ACC"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/settings_SWC_control"
         app:layout_constraintStart_toEndOf="@+id/settings_SWC_control"
         app:layout_constraintTop_toTopOf="@+id/settings_SWC_control" />
@@ -61,6 +73,7 @@
         android:text="SLOW"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/settings_SWC_speed"
         app:layout_constraintEnd_toStartOf="@+id/settings_SWC_speed"
         app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -74,6 +87,7 @@
         android:text="FAST"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/settings_SWC_speed"
         app:layout_constraintStart_toEndOf="@+id/settings_SWC_speed"
         app:layout_constraintTop_toTopOf="@+id/settings_SWC_speed" />
@@ -83,7 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:text="SETTINGS"
-        android:textColor="#000000"
+        android:textColor="#FF0000"
         android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
