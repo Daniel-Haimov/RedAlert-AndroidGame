@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 
+@SuppressWarnings("unused")
 public class MyVibrate {
 
     public final int DEFAULT_DURATION = 500;

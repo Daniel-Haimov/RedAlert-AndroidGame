@@ -2,8 +2,7 @@ package com.hw.myapplication.libs;
 
 import java.text.DecimalFormat;
 
-
-
+@SuppressWarnings("unused")
 public class NumberFormat {
 
     public static String format(long value) {

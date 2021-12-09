@@ -1,4 +1,4 @@
-package com.hw.myapplication.fragments;
+package com.hw.myapplication.fragments.top10;
 
 
 import android.app.Activity;
@@ -35,6 +35,10 @@ public class Fragment_List extends Fragment {
 
     public void setRecords(ArrayList<Record> records) {
         this.records = records;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
     }
 
 
@@ -84,9 +88,5 @@ public class Fragment_List extends Fragment {
                     "id",
                     activity.getPackageName()));
         }
-    }
-
-    public void setActivity(Activity activity) {
-        this.activity = activity;
     }
 }

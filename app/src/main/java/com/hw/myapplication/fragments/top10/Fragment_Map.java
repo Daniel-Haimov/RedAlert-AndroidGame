@@ -1,8 +1,9 @@
-package com.hw.myapplication.fragments;
+package com.hw.myapplication.fragments.top10;
 
 
 import androidx.fragment.app.Fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,11 @@ public class Fragment_Map extends Fragment {
 
     private MapView mMapView;
     private GoogleMap googleMap;
+    private Activity activity;
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,7 +38,7 @@ public class Fragment_Map extends Fragment {
         mMapView.onResume(); // needed to get the map to display immediately
 
         try {
-            MapsInitializer.initialize(getActivity().getApplicationContext());
+            MapsInitializer.initialize(activity.getApplicationContext());
         } catch (Exception e) {
             e.printStackTrace();
         }

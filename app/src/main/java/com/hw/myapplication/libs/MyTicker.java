@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@SuppressWarnings("unused")
 @NoArgsConstructor
 public class MyTicker {
     public static int DEF_DELAY = 1000;

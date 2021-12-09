@@ -6,13 +6,9 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AnticipateInterpolator;
-import android.view.animation.BounceInterpolator;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 
 import com.bumptech.glide.Glide;
 import com.hw.myapplication.R;
@@ -20,7 +16,6 @@ import com.hw.myapplication.R;
 
 public class Activity_Splash extends AppCompatActivity {
 
-    private static final String TAG = Activity_Splash.class.getSimpleName();
 
     final int ANIM_DURATION = 4400;
 
@@ -48,7 +43,7 @@ public class Activity_Splash extends AppCompatActivity {
         v.setVisibility(View.VISIBLE);
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        int height = displayMetrics.heightPixels;
+        float height = displayMetrics.heightPixels;
         v.setY(-height / 2);
         v.setScaleY(0.0f);
         v.setScaleX(0.0f);

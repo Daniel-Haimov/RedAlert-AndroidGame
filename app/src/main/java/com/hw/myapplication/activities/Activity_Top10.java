@@ -11,8 +11,8 @@ import com.hw.myapplication.data.KeysAndValues;
 import com.hw.myapplication.data.Record;
 import com.hw.myapplication.data.RecordDB;
 import com.hw.myapplication.data.RecordDBController;
-import com.hw.myapplication.fragments.Fragment_List;
-import com.hw.myapplication.fragments.Fragment_Map;
+import com.hw.myapplication.fragments.top10.Fragment_List;
+import com.hw.myapplication.fragments.top10.Fragment_Map;
 import com.hw.myapplication.R;
 import com.hw.myapplication.libs.GPS;
 import com.hw.myapplication.libs.NumberFormat;
@@ -51,7 +51,10 @@ public class Activity_Top10 extends AppCompatActivity {
 
         /* GoogleMap Fragment */
         fragmentMap = new Fragment_Map();
+        fragmentMap.setActivity(this);
         getSupportFragmentManager().beginTransaction().add(R.id.frame2, fragmentMap).commit();
+
+
         setBackGround();
     }
 

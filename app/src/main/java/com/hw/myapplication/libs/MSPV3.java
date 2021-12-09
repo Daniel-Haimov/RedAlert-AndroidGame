@@ -3,10 +3,11 @@ package com.hw.myapplication.libs;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+@SuppressWarnings("unused")
 public class MSPV3 {
 
     private static MSPV3 me;
-    private SharedPreferences sharedPreferences;
+    private final SharedPreferences sharedPreferences;
 
     public static MSPV3 getMe() {
         return me;
