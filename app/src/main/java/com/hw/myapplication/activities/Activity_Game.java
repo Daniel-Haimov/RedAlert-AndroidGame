@@ -174,8 +174,8 @@ public class Activity_Game extends AppCompatActivity {
     }
 
     private void initSound() {
-        stoneHitSound = MediaPlayer.create(this, R.raw.stone_sound);
-        coinHitSound  = MediaPlayer.create(this, R.raw.coin_sound );
+        stoneHitSound = MediaPlayer.create(this, R.raw.sound_stone);
+        coinHitSound  = MediaPlayer.create(this, R.raw.sound_coin);
     }
 
     private void MovementController(int direction){
