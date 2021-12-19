@@ -25,6 +25,7 @@ If you have any feedback, please reach out to us at Daniel.Haimov58@gmail.com
 
 ## Installation
 
-Install my-project with [APK](src/apk.apk)
+Install my-project with [RedAlert.apk](https://github.com/Daniel-Haimov/RedAlert-AndroidGame/raw/master/src/apk.apk)
+Coming soon to Google Play
 
     
