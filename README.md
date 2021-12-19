@@ -5,12 +5,11 @@ this is my first Android game app
 
 
 ## Screenshots
-
-![img_screenshot1](src/screenshot1.jpeg)
-![img_screenshot1](src/screenshot2.jpeg)
-![img_screenshot1](src/screenshot3.jpeg)
-![img_screenshot1](src/screenshot4.jpeg)
-![img_screenshot1](src/screenshot5.jpeg)
+<img src="src/screenshot1.jpeg" width="100" height="100">
+<img src="src/screenshot2.jpeg" width="100" height="100">
+<img src="src/screenshot3.jpeg" width="100" height="100">
+<img src="src/screenshot4.jpeg" width="100" height="100">
+<img src="src/screenshot5.jpeg" width="100" height="100">
 
 
 
