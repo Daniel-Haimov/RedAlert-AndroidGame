@@ -38,6 +38,10 @@ public class GPS {
 
     }
 
+    /**
+     *
+     * @param cb
+     */
     public void getLocation(CallBack_GPS cb){
         if (checkPermission()) {
             fusedLocationClient.getLastLocation().addOnCompleteListener( task->{
